@@ -1,5 +1,3 @@
-print("Hello world")
-
 def func(number1: float,number2: float, oper: str):
     add = "add"
     sub = "sub"
