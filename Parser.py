@@ -62,3 +62,11 @@ class TestClass:
 
     def test_four(self):
         assert avg_length_of_word(["bla bla bla." "boo boo"]) == 3
+
+print("Write the text, which you want to parse.")
+text = str(input())
+sentences = find_sentences(text)
+non_declarative_sentences = find_non_declarative_sentences(text)
+avg_length_of_sentence_ = avg_length_of_sentence(sentences)
+avg_length_of_word_ = avg_length_of_word(sentences)
+print(f"List of sentences:\n {sentences},\nList of non declarative sentences:\n {non_declarative_sentences},\nAverage number of characters in sentence: {avg_length_of_sentence_},\nAverage number of characters in word: {avg_length_of_word_}")
