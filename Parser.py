@@ -50,3 +50,5 @@ def avg_length_of_word(sentences: list):
         sum_of_characters += len(chars)
     return int(sum_of_characters / number_of_words) 
 
+print(find_sentences(text))
+print(find_non_declarative_sentences(text))
