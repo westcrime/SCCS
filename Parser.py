@@ -1,5 +1,4 @@
 import re
-import pytest
 
 def find_sentences(text: str):
     mister_or_mrs_reg = r"([mM]r\.|[mM]rs\.)"
@@ -49,24 +48,21 @@ def avg_length_of_word(sentences: list):
         sum_of_characters += len(chars)
     return int(sum_of_characters / number_of_words) 
 
-# content of test_class.py
-class TestClass:
-    def test_one(self):
-        assert find_sentences("Hello. My name is Mr. White. Also i am Heisenberg! I love S. White, my son and etc. boom.") == ["Hello.", "My name is Mr. White.", "Also i am Heisenberg!", "I love S. White, my son and etc. boom."]
-
-    def test_two(self):
-        assert find_non_declarative_sentences("Hello. My name is Mr. White. Also i am Heisenberg! I love S. White, my son and etc. boom.") == ["Hello.", "My name is Mr. White.", "I love S. White, my son and etc. boom."]
-
-    def test_three(self):
-        assert avg_length_of_sentence(["hello.", "hello!", "hello?"]) == 5
-
-    def test_four(self):
-        assert avg_length_of_word(["bla bla bla." "boo boo"]) == 3
-
-print("Write the text, which you want to parse.")
-text = str(input())
-sentences = find_sentences(text)
-non_declarative_sentences = find_non_declarative_sentences(text)
-avg_length_of_sentence_ = avg_length_of_sentence(sentences)
-avg_length_of_word_ = avg_length_of_word(sentences)
-print(f"List of sentences:\n {sentences},\nList of non declarative sentences:\n {non_declarative_sentences},\nAverage number of characters in sentence: {avg_length_of_sentence_},\nAverage number of characters in word: {avg_length_of_word_}")
+while True:
+    print("Write the text, which you want to parse.")
+    text = str(input())
+    sentences = find_sentences(text)
+    if len(sentences) == 0:
+        print("Error. You entered not a sentence. Please enter it again correctly.")
+        continue
+    non_declarative_sentences = find_non_declarative_sentences(text)
+    avg_length_of_sentence_ = avg_length_of_sentence(sentences)
+    avg_length_of_word_ = avg_length_of_word(sentences)
+    print(f"List of sentences:\n {sentences},\nList of non declarative sentences:\n {non_declarative_sentences},\nAverage number of characters in sentence: {avg_length_of_sentence_},\nAverage number of characters in word: {avg_length_of_word_}\n")
+    print("Do you want to continue? [Y/N]")
+    decision = input()
+    if decision == "Y":
+        continue
+    else:
+        break
+    
