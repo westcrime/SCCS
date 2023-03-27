@@ -9,7 +9,7 @@ def find_sentences(text: str):
     initials_reg = r"([\s.][A-Z]\.(\s[A-Z]\.|\s[A-Z]))"
     not_punct_reg = r"([^\.\?\!])"
     punc_reg = r"((\.|\?|\!))"
-    regexpr = f"([A-Z](({mister_or_mrs_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
+    regexpr = f"([A-Za-z](({mister_or_mrs_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
     sentences_with_captured_groups = re.findall(regexpr,text)
     sentences = []
     for sentence in sentences_with_captured_groups:
@@ -25,7 +25,7 @@ def find_non_declarative_sentences(text: str):
     initials_reg = r"([\s.][A-Z]\.(\s[A-Z]\.|\s[A-Z]))"
     not_punct_reg = r"([^\.\?\!])"
     punc_reg = r"((\.))"
-    regexpr = f"([A-Z](({mister_or_mrs_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
+    regexpr = f"([A-Za-z](({mister_or_mrs_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
     sentences_with_captured_groups = re.findall(regexpr,text)
     sentences = []
     for sentence in sentences_with_captured_groups:
