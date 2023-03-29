@@ -126,6 +126,9 @@ def main():
         elif decision == "9":
             print("Exiting\n")
             break
+        else:
+            print("Error! Try again")
+            continue
 
 if __name__ == "__main__":
     main()
