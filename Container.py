@@ -6,12 +6,12 @@ class Container:
     _cont = dict()
     _curr_user = None
     
-    def add_user(self, name: str):
+    def add_user(self, _name: str):
         for i in self._cont:
-            if i == name:
+            if i == _name:
                 return
-        self._cont[name] = set()
-        self._curr_user = name
+        self._cont[_name] = set()
+        self.change_user(_name)
 
     def grep(self, filter:str):
         try:
@@ -30,6 +30,8 @@ class Container:
         if self._curr_user != None:
             if input("Save current container (y/n)?: ") == 'y':
                 self.save()
+            else:
+                self._cont[name] = set()
 
         self._curr_user = name
 
@@ -40,6 +42,9 @@ class Container:
 
         if input("Load the container (y/n)?: ") == 'y':
             self.load() 
+        else:
+            self._cont[name] = set()
+
         
 
     def save(self):

@@ -4,4 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-CMD [ "python", "Container.py" ]
+RUN pip3 install pytest
+
+CMD [ "python", "Parser.py" ]
