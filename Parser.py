@@ -3,6 +3,7 @@ import pytest
 
 def find_sentences(text: str):
     mister_or_mrs_reg = r"([mM]r\.|[mM]rs\.)"
+    jr_reg = r"[Jj]r\."
     etc_reg = r"(\setc\.\s[a-z])"
     eg_reg = r"(e\.g\.\s[a-z])"
     c_reg  = r"(\sc\.\s[a-z])"
@@ -10,7 +11,7 @@ def find_sentences(text: str):
     initials_reg = r"([\s.][A-Z]\.(\s[A-Z]\.|\s[A-Z]))"
     not_punct_reg = r"([^\.\?\!])"
     punc_reg = r"((\.|\?|\!))"
-    regexpr = f"([A-Za-z](({mister_or_mrs_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
+    regexpr = f"((({mister_or_mrs_reg}|{jr_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
     sentences_with_captured_groups = re.findall(regexpr,text)
     sentences = []
     for sentence in sentences_with_captured_groups:
@@ -20,13 +21,14 @@ def find_sentences(text: str):
 def find_non_declarative_sentences(text: str):
     mister_or_mrs_reg = r"([mM]r\.|[mM]rs\.)"
     etc_reg = r"(\setc\.\s[a-z])"
+    jr_reg = r"[Jj]r\."
     eg_reg = r"(e\.g\.\s[a-z])"
     c_reg  = r"(\sc\.\s[a-z])"
     ie_reg = r"(i\.e\.\s[a-z])"
     initials_reg = r"([\s.][A-Z]\.(\s[A-Z]\.|\s[A-Z]))"
     not_punct_reg = r"([^\.\?\!])"
     punc_reg = r"((\.))"
-    regexpr = f"([A-Za-z](({mister_or_mrs_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
+    regexpr = f"((({mister_or_mrs_reg}|{jr_reg}|{etc_reg}|{eg_reg}|{c_reg}|{ie_reg}|{initials_reg})|{not_punct_reg})*{punc_reg})"
     sentences_with_captured_groups = re.findall(regexpr,text)
     sentences = []
     for sentence in sentences_with_captured_groups:
@@ -76,8 +78,17 @@ def main():
         print("Write the text, which you want to parse.")
         text = str(input())
         print("Write n and k for task:")
-        n = int(input())
-        k = int(input())
+        while True:
+            try :
+                n = int(input())
+                k = int(input())
+            except ValueError:
+                print("Error! Enter normal numbers")
+                continue
+            if n <= 0 or k <= 0:
+                print("Error! Enter normal numbers")
+                continue
+            break
         sentences = find_sentences(text)
         if len(sentences) == 0:
             print("Error. You entered not a sentence. Please enter it again correctly.")
@@ -91,7 +102,6 @@ def main():
             for j in ngrams.keys():
                 if ngrams[j] == i:
                     sorted_dict[j] = ngrams[j]
-                    break
         
         if k > len(sorted_dict):
             print("You entered a k more than a length of n-grams. We will just write full list of n-grams")
