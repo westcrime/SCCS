@@ -5,7 +5,8 @@ from lab_serializer.serializers.xml_serializer import Xml
 
 def main():
     serializer = Json()
-    serializer.dumps("Hello")
+    result = serializer.dumps("Hello")
+    print(result)
 
 
 if __name__ == "__main__":
