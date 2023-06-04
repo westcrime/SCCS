@@ -11,7 +11,7 @@ sidebar_menu = [{'title': "Список филиалов", 'url_name': 'insuranc
             {'title': "Список моих договоров", 'url_name': 'my_insurance_contracts'},
             {'title': "Список агентов", 'url_name': 'insurance_agents'},
             {'title': "Список видов страхования", 'url_name': ''},
-            {'title': "Список моих объектов страхования", 'url_name': 'insurance_objects'}]
+            {'title': "Список моих объектов страхования", 'url_name': 'objects'}]
 
 
 class DataMixin:

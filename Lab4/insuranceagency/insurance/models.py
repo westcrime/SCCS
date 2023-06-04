@@ -1,7 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
-
+from datetime import date
 from insuranceagency import settings
 from django.contrib.auth.models import AbstractUser
 
@@ -32,10 +32,15 @@ class ObjectOfInsurance(models.Model):
         NORMAL = "Нормальные"
         LOW = "Низкие"
 
+    photo = models.ImageField(null=True, upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
+    name = models.CharField(default="Какой-то объект", max_length=100, db_index=True, verbose_name="Название объекта страхования")
     insured_risks = models.CharField(max_length=11, choices=InsuredRisks.choices, default=InsuredRisks.LOW, )
     ins_cat = models.ForeignKey('InsuranceCategory', on_delete=models.PROTECT, verbose_name="Вид страхования")
     cost = models.FloatField(verbose_name='Цена объекта')
     user = models.ForeignKey('User', on_delete=models.SET_DEFAULT, default=None, verbose_name="Владелец объекта")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Объекты страхования'
@@ -90,12 +95,13 @@ class InsuranceBranch(models.Model):  # Филиал страхования
 
 
 class InsuranceContract(models.Model):
-    ins_object = models.ForeignKey('ObjectOfInsurance', on_delete=models.PROTECT, verbose_name="Объект страхования")
-    time_create = models.DateTimeField(auto_now=True, verbose_name="Дата и время заключения")
-    time_end = models.DateTimeField(verbose_name="Дата и время окончания договора")
+    is_activated = models.BooleanField(blank=True, default=False, verbose_name="Активирована ли страховка")
+    ins_object = models.ForeignKey('ObjectOfInsurance', on_delete=models.CASCADE, verbose_name="Объект страхования")
+    time_create = models.DateTimeField(null=True, blank=True, verbose_name="Дата и время заключения")
+    time_end = models.DateTimeField(null=True, blank=True, verbose_name="Дата и время окончания договора")
     ins_agent = models.ForeignKey('InsuranceAgent', on_delete=models.PROTECT, verbose_name="агент страхования")
-    ins_client = models.ForeignKey('User', on_delete=models.PROTECT, verbose_name="агент страхования")
-    total_cost = models.FloatField(help_text='Общая цена услуги', verbose_name='Общая цена услуги')
+    ins_client = models.ForeignKey('User', on_delete=models.PROTECT, verbose_name="Клиент страхования")
+    total_cost = models.FloatField(null=True, blank=True, help_text='Общая цена услуги', verbose_name='Общая цена услуги')
 
     def get_absolute_url(self):
         return reverse('insurance_contract', kwargs={'ins_contract_id': self.pk})

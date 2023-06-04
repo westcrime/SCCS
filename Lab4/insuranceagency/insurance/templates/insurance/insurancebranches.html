@@ -4,15 +4,12 @@
 <ul class="list-articles">
 	{% for b in branches %}
 			<li><div class="article-panel">
-	<p class="first">Категория: {{b.name}}</p>
+	<p class="first">Филиал: {{b.name}}</p>
 </div>
-{% if b.photo %}
-	<p><img class="img-article-left thumb" src="{{b.photo.url}}"></p>
-{% endif %}
-				<h2>{{p.name}}</h2>
-	{% autoescape on %}
-	{{b.content|linebreaks|truncatewords:50}}
-	{% endautoescape %}
+
+	<p>Адрес: {{ b.address }}</p>
+	<p>Номер телефона: {{ b.phone_number }}</p>
+	<p class="link-read-post"><a href="make_contract?branch={{ b.pk }}/">Заключить договор здесь</a></p>
 			<div class="clear"></div>
 			</li>
 	{% endfor %}

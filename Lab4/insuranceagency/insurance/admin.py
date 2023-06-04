@@ -12,8 +12,8 @@ class InsuranceCategoryAdmin(admin.ModelAdmin):
 
 
 class ObjectOfInsuranceAdmin(admin.ModelAdmin):
-    list_display = ('insured_risks', 'cost', 'ins_cat')
-    search_fields = ('insured_risks', 'cost')
+    list_display = ('insured_risks', 'user', 'cost', 'ins_cat')
+    search_fields = ('insured_risks', 'user', 'cost')
 
 
 class InsuranceAgentAdmin(admin.ModelAdmin):
