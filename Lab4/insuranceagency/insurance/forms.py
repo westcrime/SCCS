@@ -1,13 +1,56 @@
 import datetime
 import logging
-import time
-from django.utils import timezone
+
+import pytz
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 
 from .models import *
+
+
+class EditObjectForm(ModelForm):
+    class Meta:
+        model = ObjectOfInsurance
+        fields = ['name']
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        logging.debug(f"имя - {name}")
+        if name is None:
+            raise ValidationError("Неправильный формат имени")
+        for ch in name:
+            if ch != ' ':
+                return name
+        return ValidationError("Неправильный формат имени")
+
+
+class AddObjectForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = ObjectOfInsurance
+        fields = ['name', 'photo', 'insured_risks', 'ins_cat', 'cost']
+
+    def clean_cost(self):
+        logging.basicConfig(filename='logging.log', encoding='utf-8', level=logging.DEBUG)
+        cost = self.cleaned_data['cost']
+        logging.debug(f"цена - {cost}")
+        if cost <= 0:
+            raise ValidationError("Неверный формат цены объекта!")
+        logging.debug(f"цена из даты - {self.cleaned_data['cost']}")
+        return cost
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if name is None:
+            raise ValidationError("Неправильный формат имени")
+        for ch in name:
+            if ch != ' ':
+                return name
+        return ValidationError("Неправильный формат имени")
 
 
 class RegisterUserForm(UserCreationForm):
@@ -42,20 +85,10 @@ class MakeContractForm(ModelForm):
         fields = ['ins_object', 'time_end', 'ins_agent']
 
     def clean_time_end(self):
-        now = datetime.datetime.now()
+        now = datetime.datetime.now().replace(tzinfo=pytz.utc)
+        time_end = self.cleaned_data['time_end']
         logging.basicConfig(filename='logging.log', encoding='utf-8', level=logging.DEBUG)
-        try:
-            time_str = f"{self.cleaned_data['time_end'].year}-{self.cleaned_data['time_end'].month}-" \
-                       f"{self.cleaned_data['time_end'].day} {self.cleaned_data['time_end'].hour}:" \
-                       f"{self.cleaned_data['time_end'].minute}"
-            logging.debug(str(time_str))
-            time_end = datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M")
-        except:
-            raise ValidationError("Неправильный формат даты и времени")
-        logging.debug(str(now))
-        logging.debug(str(time_end))
         if time_end <= now:
             raise ValidationError("Неправильная дата и время")
         logging.debug("Проверка на дату и время прошла успешно")
-        logging.debug(self.cleaned_data['time_end'])
-        logging.debug(self.cleaned_data)
+        return time_end

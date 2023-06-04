@@ -10,8 +10,10 @@
 
 <p style="font-size:75%;"><a href="/?sort=name">Сортировать по имени</a></p>
 <p style="font-size:75%;"><a href="/?sort=ins_coef">Сортировать по стоимости</a></p>
-
+<p>Шутка: {{joke}}</p>
+<p>Рандомное занятие: {{activity}}</p>
 <ul class="list-articles">
+
 	{% for p in categories %}
 			<li><div class="article-panel">
 	<p class="first">Категория: {{p.name}}</p>

@@ -9,8 +9,8 @@ menu = [{'title': "На главную", 'url_name': 'home'},
 
 sidebar_menu = [{'title': "Список филиалов", 'url_name': 'insurance_branches'},
             {'title': "Список моих договоров", 'url_name': 'my_insurance_contracts'},
-            {'title': "Список агентов", 'url_name': 'insurance_agents'},
-            {'title': "Список видов страхования", 'url_name': ''},
+            {'title': "Список агентов", 'url_name': 'list_agents'},
+            {'title': "Список видов страхования", 'url_name': 'home'},
             {'title': "Список моих объектов страхования", 'url_name': 'objects'}]
 
 
@@ -29,6 +29,4 @@ class DataMixin:
         context['menu'] = user_menu
 
         context['sidebar_menu'] = user_sidebar_menu
-        if 'cat_selected' not in context:
-            context['cat_selected'] = user_sidebar_menu[0]['title']
         return context

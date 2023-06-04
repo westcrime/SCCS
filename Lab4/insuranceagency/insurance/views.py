@@ -1,4 +1,6 @@
 import datetime
+
+import pytz
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -9,7 +11,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
 import logging
-from .forms import RegisterUserForm, MakeContractForm
+
+from insurance.api.joke import JokeService
+from .api.activity import ActivityService
+from .forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
 from .models import *
 from insurance.utils import DataMixin
 
@@ -39,7 +44,7 @@ def delete_object(request):
         name = object.name
         object.delete()
         messages.success(request, f"Вы удалили: {name}!")
-        return redirect('home')
+        return redirect('objects')
 
 
 class InsuranceContracts(LoginRequiredMixin, DataMixin, ListView):
@@ -72,6 +77,10 @@ class InsuranceCategories(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        joke = JokeService.get_random_joke()
+        activity = ActivityService.get_random_activity()
+        context['joke'] = joke['setup'] + ' ' + joke['punchline']
+        context['activity'] = activity['activity']
         c_def = self.get_user_context(title="Главная страница")
         return dict(list(context.items()) + list(c_def.items()))
 
@@ -95,6 +104,24 @@ class InsuranceBranches(DataMixin, ListView):
 
     def get_queryset(self):
         return InsuranceBranch.objects.all()
+
+
+class InsuranceAgents(DataMixin, ListView):
+    model = InsuranceAgent
+    template_name = 'insurance/list_agents.html'
+    context_object_name = 'agents'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Агенты нашей компании")
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_queryset(self):
+        if self.request.GET.get('sort') == 'first_name':
+            return InsuranceAgent.objects.order_by('first_name')
+        if self.request.GET.get('sort') == 'total_earning':
+            return InsuranceAgent.objects.order_by('total_earning')
+        return InsuranceAgent.objects.all()
 
 
 class ObjectsOfInsurance(LoginRequiredMixin, DataMixin, ListView):
@@ -133,10 +160,43 @@ class RegisterUser(DataMixin, CreateView):
         return redirect('home')
 
 
+class AddObject(LoginRequiredMixin, DataMixin, CreateView):
+    login_url = 'login'
+    form_class = AddObjectForm
+    template_name = 'insurance/add_object.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Добавление нового объекта")
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def form_valid(self, form):
+        object = form.save(commit=False)
+        object.user_id = self.request.user.pk
+        form.save()
+        logging.info("Объект успешно Добавлен")
+        return redirect('home')
+
+
+def edit_object(request):
+    id = request.GET.get('id')
+    object = ObjectOfInsurance.objects.get(id=id)
+    if request.method == 'POST':
+        form = EditObjectForm(request.POST, instance=object)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect('objects')
+    else:
+        form = EditObjectForm(instance=object,)
+        return render(request, 'insurance/edit_object.html', {'form': form})
+
+
 class LoginUser(DataMixin, LoginView):
     form_class = AuthenticationForm
     template_name = 'insurance/login.html'
-
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -154,7 +214,6 @@ class MakeContract(LoginRequiredMixin, DataMixin, CreateView):
     template_name = 'insurance/make_contract.html'
     success_url = reverse_lazy('home')
 
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Оформление страховки")
@@ -163,12 +222,10 @@ class MakeContract(LoginRequiredMixin, DataMixin, CreateView):
     def form_valid(self, form):
         logging.basicConfig(filename='logging.log', encoding='utf-8', level=logging.DEBUG)
         logging.debug(form.cleaned_data)
-        data = self.request.POST.dict()
-        logging.debug(data)
-        time_end = datetime.datetime.strptime(data['time_end'], "%d.%m.%Y")
+        time_end = form.cleaned_data['time_end']
+        form.cleaned_data['time_create'] = datetime.datetime.now().replace(tzinfo=pytz.utc)
         contract = form.save(commit=False)
         contract.user = self.request.user
-        contract.time_create = datetime.datetime.now()
         obj = form.cleaned_data['ins_object']
         object_cost = obj.cost
         if obj.insured_risks == "Низкие":
@@ -181,12 +238,11 @@ class MakeContract(LoginRequiredMixin, DataMixin, CreateView):
         logging.debug(f"клин дата - {form.cleaned_data}")
         logging.debug(contract.time_create)
         logging.debug(time_end)
-        if (time_end - contract.time_create).days:
-            contract.total_cost = object_cost_with_cat * (time_end - contract.time_create).days
+        if (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days:
+            contract.total_cost = object_cost_with_cat * (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days
         else:
             contract.total_cost = object_cost_with_cat
         contract.ins_client = self.request.user
-        contract.time_end = time_end
 
         contract = form.save()
         messages.success(self.request, "Вы оформили страховку, можете узнать ее цену и активировать в МОИХ ДОГОВОРАХ")

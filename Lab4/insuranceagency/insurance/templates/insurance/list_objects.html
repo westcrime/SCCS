@@ -6,6 +6,7 @@
 		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	{% endfor %}
+<a class="btn btn-primary" href="/add_object" role="button">Зарегистрировать новый объект</a>
 <h1>Ваши объекты</h1>
 
 <p style="font-size:75%;"><a href="/objects?sort=name">Сортировать по имени</a></p>
@@ -19,11 +20,11 @@
 	{% if o.photo %}
 	<p><img class="img-article-left thumb" src="{{o.photo.url}}"></p>
 	{% endif %}
-	<p class="first">Цена объекта: {{o.cost}}</p>
+	<p class="first">Цена объекта: {{o.cost}} $</p>
 	<p class="first">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
 	<p class="first">Категория страховки: {{o.ins_cat.name}}</p>
 	<p class="link-read-post"><a href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a></p>
-	<p class="link-read-post"><a href="/change_object?id={{ o.id }}">Изменить данные (Некоторые)</a></p>
+	<p class="link-read-post"><a href="/edit_object?id={{ o.id }}">Изменить данные (Некоторые)</a></p>
 			<div class="clear"></div>
 			</li>
 	{% endfor %}

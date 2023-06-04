@@ -37,7 +37,7 @@
 	{% if c.url_name == cat_selected %}
 		<li class="selected">{{c.title}}</li>
 	{% else %}
-		<li><a href="{{ c.url_name }}">{{c.title}}</a></li>
+		<li><a href="{% url c.url_name %}">{{c.title}}</a></li>
 	{% endif %}
 
 {% endfor %}

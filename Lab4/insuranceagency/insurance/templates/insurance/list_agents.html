@@ -1,0 +1,23 @@
+{% extends 'insurance/base.html' %}
+{% block content %}
+<h1>Наши агенты</h1>
+
+<p style="font-size:75%;"><a href="/list_agents?sort=first_name">Сортировать по имени</a></p>
+<p style="font-size:75%;"><a href="/list_agents?sort=first_name">Сортировать по заработку</a></p>
+<ul class="list-articles">
+
+	{% for a in agents %}
+			<li><div class="article-panel">
+	<p>Имя: {{ a.first_name }}</p>
+    <p>Фамилия: {{ a.last_name }}</p>
+    <p>Отчество: {{ a.surname }}</p>
+</div>
+	<p>Адрес: {{ a.address }}</p>
+    <p>Телефон: {{ a.phone_number }}</p>
+    <p>Агенство: {{ a.ins_branch.name }}</p>
+	<p>Заработанные деньги: {{ a.total_earning }} $</p>
+			<div class="clear"></div>
+			</li>
+	{% endfor %}
+</ul>
+{% endblock %}

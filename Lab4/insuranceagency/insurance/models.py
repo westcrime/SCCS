@@ -34,9 +34,9 @@ class ObjectOfInsurance(models.Model):
 
     photo = models.ImageField(null=True, upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
     name = models.CharField(default="Какой-то объект", max_length=100, db_index=True, verbose_name="Название объекта страхования")
-    insured_risks = models.CharField(max_length=11, choices=InsuredRisks.choices, default=InsuredRisks.LOW, )
+    insured_risks = models.CharField(max_length=11, choices=InsuredRisks.choices, default=InsuredRisks.LOW, verbose_name="Категория рисков")
     ins_cat = models.ForeignKey('InsuranceCategory', on_delete=models.PROTECT, verbose_name="Вид страхования")
-    cost = models.FloatField(verbose_name='Цена объекта')
+    cost = models.IntegerField(default=0, verbose_name='Цена объекта')
     user = models.ForeignKey('User', on_delete=models.SET_DEFAULT, default=None, verbose_name="Владелец объекта")
 
     def __str__(self):
