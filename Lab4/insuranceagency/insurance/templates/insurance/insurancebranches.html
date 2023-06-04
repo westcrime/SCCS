@@ -1,0 +1,20 @@
+{% extends 'insurance/base.html' %}
+{% block content %}
+<h1>Филиалы нашего агенства</h1>
+<ul class="list-articles">
+	{% for b in branches %}
+			<li><div class="article-panel">
+	<p class="first">Категория: {{b.name}}</p>
+</div>
+{% if b.photo %}
+	<p><img class="img-article-left thumb" src="{{b.photo.url}}"></p>
+{% endif %}
+				<h2>{{p.name}}</h2>
+	{% autoescape on %}
+	{{b.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+			</li>
+	{% endfor %}
+</ul>
+{% endblock %}

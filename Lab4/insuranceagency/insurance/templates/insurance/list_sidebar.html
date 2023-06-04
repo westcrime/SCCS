@@ -1,0 +1,9 @@
+{% for c in menu %}
+{% if not user.is_authenticated and not c.title == "Список договоров" %}
+	{% if c.url_name == cat_selected %}
+		<li class="selected">{{c.title}}</li>
+	{% else %}
+		<li><a href="{{ c.url_name }}">{{c.title}}</a></li>
+	{% endif %}
+{% endif %}
+{% endfor %}
