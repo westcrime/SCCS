@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractUser
 class InsuranceCategory(models.Model):
     name = models.CharField(max_length=100, db_index=True, verbose_name="Вид страхования")
     content = models.TextField(blank=True, verbose_name="Информация об страховании")
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
+    photo = models.ImageField(null=True, upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
     ins_coef = models.FloatField(help_text='Страховой коэффициент услуги (цена объекта * Страховой коэффициент услуги)',
                                  verbose_name='Страховой коэффициент услуги')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
@@ -41,6 +41,17 @@ class ObjectOfInsurance(models.Model):
 
     def __str__(self):
         return self.name
+
+    def cost_with_all_coefs(self):
+        actual_cost = self.cost * self.ins_cat.ins_coef
+        if self.insured_risks == "Низкие":
+            actual_cost = actual_cost * 0.033
+        elif self.insured_risks == "Нормальные":
+            actual_cost = actual_cost * 0.066
+        else:
+            actual_cost = actual_cost * 0.1
+
+        return actual_cost
 
     class Meta:
         verbose_name = 'Объекты страхования'

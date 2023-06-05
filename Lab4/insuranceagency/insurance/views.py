@@ -223,25 +223,20 @@ class MakeContract(LoginRequiredMixin, DataMixin, CreateView):
         logging.basicConfig(filename='logging.log', encoding='utf-8', level=logging.DEBUG)
         logging.debug(form.cleaned_data)
         time_end = form.cleaned_data['time_end']
-        form.cleaned_data['time_create'] = datetime.datetime.now().replace(tzinfo=pytz.utc)
         contract = form.save(commit=False)
+        contract.time_create = datetime.datetime.now().replace(tzinfo=pytz.utc)
         contract.user = self.request.user
         obj = form.cleaned_data['ins_object']
-        object_cost = obj.cost
-        if obj.insured_risks == "Низкие":
-            object_cost_with_risk = object_cost * 0.033
-        elif obj.insured_risks == "Нормальные":
-            object_cost_with_risk = object_cost * 0.066
-        else:
-            object_cost_with_risk = object_cost * 0.1
-        object_cost_with_cat = object_cost_with_risk * obj.ins_cat.ins_coef
+        object_cost = obj.cost_with_all_coefs()
+
+        # object_cost_with_cat = object_cost_with_risk * obj.ins_cat.ins_coef
         logging.debug(f"клин дата - {form.cleaned_data}")
         logging.debug(contract.time_create)
         logging.debug(time_end)
-        if (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days:
-            contract.total_cost = object_cost_with_cat * (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days
+        if (time_end - contract.time_create).days:
+            contract.total_cost = object_cost * (time_end - contract.time_create).days
         else:
-            contract.total_cost = object_cost_with_cat
+            contract.total_cost = object_cost
         contract.ins_client = self.request.user
 
         contract = form.save()
