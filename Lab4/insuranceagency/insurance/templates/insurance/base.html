@@ -42,8 +42,8 @@
 
 {% endfor %}
 		{% if user.is_authenticated %}
-	<li><a href="logout">Выйти</a></li>
-	{% endif %}
+			<li><a href="logout">Выйти</a></li>
+		{% endif %}
 	</ul>
 </td>
 <!-- Конец Sidebar'а -->
@@ -54,6 +54,11 @@
 
 <!-- Блок контента -->
 	<div class="content-text">
+		{% if user.is_authenticated %}
+			<p>Вы вошли как {{ user }}</p>
+		{% else %}
+			<p>Вы не вошли в учетную запись</p>
+		{% endif %}
 {% block content %}
 {% endblock %}
 	</div>

@@ -3,9 +3,7 @@ from django.db.models import Count
 from .models import *
 
 menu = [{'title': "На главную", 'url_name': 'home'},
-            {'title': "О сайте", 'url_name': 'about'},
-            {'title': "Заключить договор", 'url_name': 'make_contract'},
-            {'title': "Обратная связь", 'url_name': 'contact'}]
+            {'title': "Заключить договор", 'url_name': 'make_contract'}]
 
 sidebar_menu = [{'title': "Список филиалов", 'url_name': 'insurance_branches'},
             {'title': "Список моих договоров", 'url_name': 'my_insurance_contracts'},
@@ -21,10 +19,12 @@ class DataMixin:
         user_sidebar_menu = sidebar_menu.copy()
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
-            user_menu.pop(2)
+            user_menu.pop(1)
             user_sidebar_menu.pop(1)
             user_sidebar_menu.pop(1)
             user_sidebar_menu.pop(2)
+        else:
+            context['username'] = self.request.user.username
 
         context['menu'] = user_menu
 
