@@ -1,0 +1,631 @@
+DEBUG:root:цена - 0.0
+DEBUG:root:цена - 1.0
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py changed, reloading.
+DEBUG:root:цена - 1.0
+DEBUG:root:цена из даты - 1.0
+DEBUG:root:цена - 1.0
+DEBUG:root:цена из даты - 1.0
+DEBUG:root:цена - 0.0
+DEBUG:root:цена - 1.0
+DEBUG:root:цена из даты - 1.0
+DEBUG:root:цена - 1.0
+DEBUG:root:цена из даты - 1.0
+DEBUG:root:цена - 1.0
+DEBUG:root:цена из даты - 1.0
+DEBUG:root:цена - 0.0
+DEBUG:root:цена - 1.0
+DEBUG:root:цена из даты - 1.0
+DEBUG:root:цена - 4.0
+DEBUG:root:цена из даты - 4.0
+DEBUG:root:цена - 2.0
+DEBUG:root:цена из даты - 2.0
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\models.py changed, reloading.
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\models.py changed, reloading.
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:PIL.Image:Importing BlpImagePlugin
+DEBUG:PIL.Image:Importing BmpImagePlugin
+DEBUG:PIL.Image:Importing BufrStubImagePlugin
+DEBUG:PIL.Image:Importing CurImagePlugin
+DEBUG:PIL.Image:Importing DcxImagePlugin
+DEBUG:PIL.Image:Importing DdsImagePlugin
+DEBUG:PIL.Image:Importing EpsImagePlugin
+DEBUG:PIL.Image:Importing FitsImagePlugin
+DEBUG:PIL.Image:Importing FitsStubImagePlugin
+DEBUG:PIL.Image:Importing FliImagePlugin
+DEBUG:PIL.Image:Importing FpxImagePlugin
+DEBUG:PIL.Image:Image: failed to import FpxImagePlugin: No module named 'olefile'
+DEBUG:PIL.Image:Importing FtexImagePlugin
+DEBUG:PIL.Image:Importing GbrImagePlugin
+DEBUG:PIL.Image:Importing GifImagePlugin
+DEBUG:PIL.Image:Importing GribStubImagePlugin
+DEBUG:PIL.Image:Importing Hdf5StubImagePlugin
+DEBUG:PIL.Image:Importing IcnsImagePlugin
+DEBUG:PIL.Image:Importing IcoImagePlugin
+DEBUG:PIL.Image:Importing ImImagePlugin
+DEBUG:PIL.Image:Importing ImtImagePlugin
+DEBUG:PIL.Image:Importing IptcImagePlugin
+DEBUG:PIL.Image:Importing JpegImagePlugin
+DEBUG:PIL.Image:Importing Jpeg2KImagePlugin
+DEBUG:PIL.Image:Importing McIdasImagePlugin
+DEBUG:PIL.Image:Importing MicImagePlugin
+DEBUG:PIL.Image:Image: failed to import MicImagePlugin: No module named 'olefile'
+DEBUG:PIL.Image:Importing MpegImagePlugin
+DEBUG:PIL.Image:Importing MpoImagePlugin
+DEBUG:PIL.Image:Importing MspImagePlugin
+DEBUG:PIL.Image:Importing PalmImagePlugin
+DEBUG:PIL.Image:Importing PcdImagePlugin
+DEBUG:PIL.Image:Importing PcxImagePlugin
+DEBUG:PIL.Image:Importing PdfImagePlugin
+DEBUG:PIL.Image:Importing PixarImagePlugin
+DEBUG:PIL.Image:Importing PngImagePlugin
+DEBUG:PIL.Image:Importing PpmImagePlugin
+DEBUG:PIL.Image:Importing PsdImagePlugin
+DEBUG:PIL.Image:Importing QoiImagePlugin
+DEBUG:PIL.Image:Importing SgiImagePlugin
+DEBUG:PIL.Image:Importing SpiderImagePlugin
+DEBUG:PIL.Image:Importing SunImagePlugin
+DEBUG:PIL.Image:Importing TgaImagePlugin
+DEBUG:PIL.Image:Importing TiffImagePlugin
+DEBUG:PIL.Image:Importing WebPImagePlugin
+DEBUG:PIL.Image:Importing WmfImagePlugin
+DEBUG:PIL.Image:Importing XbmImagePlugin
+DEBUG:PIL.Image:Importing XpmImagePlugin
+DEBUG:PIL.Image:Importing XVThumbImagePlugin
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+ERROR:django.request:Internal Server Error: /add_object/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: insurance_objectofinsurance.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 152, in form_valid
+    object = form.save()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\models.py", line 542, in save
+    self.instance.save()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1820, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: insurance_objectofinsurance.user_id
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\models.py changed, reloading.
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:PIL.TiffImagePlugin:tag: ImageWidth (256) - type: short (3) - value: b'\xe4\x12'
+DEBUG:PIL.TiffImagePlugin:tag: ImageLength (257) - type: short (3) - value: b'\r\n'
+DEBUG:PIL.TiffImagePlugin:tag: BitsPerSample (258) - type: short (3) Tag Location: 46 - Data Location: 182 - value: b'\x08\x00\x08\x00\x08\x00'
+DEBUG:PIL.TiffImagePlugin:tag: PhotometricInterpretation (262) - type: short (3) - value: b'\x02\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Make (271) - type: string (2) Tag Location: 70 - Data Location: 188 - value: b'Canon\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Model (272) - type: string (2) Tag Location: 82 - Data Location: 194 - value: b'Canon EOS 200D\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Orientation (274) - type: short (3) - value: b'\x01\x00'
+DEBUG:PIL.TiffImagePlugin:tag: SamplesPerPixel (277) - type: short (3) - value: b'\x03\x00'
+DEBUG:PIL.TiffImagePlugin:tag: XResolution (282) - type: rational (5) Tag Location: 118 - Data Location: 209 - value: b"\x00\x9f$\x00\x10'\x00\x00"
+DEBUG:PIL.TiffImagePlugin:tag: YResolution (283) - type: rational (5) Tag Location: 130 - Data Location: 217 - value: b"\x00\x9f$\x00\x10'\x00\x00"
+DEBUG:PIL.TiffImagePlugin:tag: ResolutionUnit (296) - type: short (3) - value: b'\x02\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Software (305) - type: string (2) Tag Location: 154 - Data Location: 225 - value: <table: 34 bytes>
+DEBUG:PIL.TiffImagePlugin:tag: DateTime (306) - type: string (2) Tag Location: 166 - Data Location: 259 - value: b'2018:09:06 22:49:53\x00'
+DEBUG:PIL.TiffImagePlugin:tag: ExifIFD (34665) - type: long (4) - value: b'\x18\x01\x00\x00'
+DEBUG:root:цена - 2
+DEBUG:root:цена из даты - 2
+DEBUG:root:цена - 22222
+DEBUG:root:цена из даты - 22222
+DEBUG:PIL.TiffImagePlugin:tag: ImageWidth (256) - type: short (3) - value: b'\xe4\x12'
+DEBUG:PIL.TiffImagePlugin:tag: ImageLength (257) - type: short (3) - value: b'\r\n'
+DEBUG:PIL.TiffImagePlugin:tag: BitsPerSample (258) - type: short (3) Tag Location: 46 - Data Location: 182 - value: b'\x08\x00\x08\x00\x08\x00'
+DEBUG:PIL.TiffImagePlugin:tag: PhotometricInterpretation (262) - type: short (3) - value: b'\x02\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Make (271) - type: string (2) Tag Location: 70 - Data Location: 188 - value: b'Canon\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Model (272) - type: string (2) Tag Location: 82 - Data Location: 194 - value: b'Canon EOS 200D\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Orientation (274) - type: short (3) - value: b'\x01\x00'
+DEBUG:PIL.TiffImagePlugin:tag: SamplesPerPixel (277) - type: short (3) - value: b'\x03\x00'
+DEBUG:PIL.TiffImagePlugin:tag: XResolution (282) - type: rational (5) Tag Location: 118 - Data Location: 209 - value: b"\x00\x9f$\x00\x10'\x00\x00"
+DEBUG:PIL.TiffImagePlugin:tag: YResolution (283) - type: rational (5) Tag Location: 130 - Data Location: 217 - value: b"\x00\x9f$\x00\x10'\x00\x00"
+DEBUG:PIL.TiffImagePlugin:tag: ResolutionUnit (296) - type: short (3) - value: b'\x02\x00'
+DEBUG:PIL.TiffImagePlugin:tag: Software (305) - type: string (2) Tag Location: 154 - Data Location: 225 - value: <table: 34 bytes>
+DEBUG:PIL.TiffImagePlugin:tag: DateTime (306) - type: string (2) Tag Location: 166 - Data Location: 259 - value: b'2018:09:06 22:49:53\x00'
+DEBUG:PIL.TiffImagePlugin:tag: ExifIFD (34665) - type: long (4) - value: b'\x18\x01\x00\x00'
+DEBUG:root:цена - -5
+DEBUG:root:цена - 6
+DEBUG:root:цена из даты - 6
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\utils.py changed, reloading.
+DEBUG:root:цена - 6
+DEBUG:root:цена из даты - 6
+WARNING:django.request:Not Found: /add_object/list_agents
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:root:цена - 44
+DEBUG:root:цена из даты - 44
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py changed, reloading.
+DEBUG:root:цена - 0
+DEBUG:PIL.TiffImagePlugin:tag: Orientation (274) - type: short (3) - value: b'\x00\x01'
+DEBUG:PIL.TiffImagePlugin:tag: XResolution (282) - type: rational (5) Tag Location: 34 - Data Location: 98 - value: b"\x00\x04SI\x00\x00'\x10"
+DEBUG:PIL.TiffImagePlugin:tag: YResolution (283) - type: rational (5) Tag Location: 46 - Data Location: 106 - value: b"\x00\x04SI\x00\x00'\x10"
+DEBUG:PIL.TiffImagePlugin:tag: ResolutionUnit (296) - type: short (3) - value: b'\x00\x03'
+DEBUG:PIL.TiffImagePlugin:tag: Software (305) - type: string (2) Tag Location: 70 - Data Location: 114 - value: b'Adobe Photoshop CS6 (Windows)\x00'
+DEBUG:PIL.TiffImagePlugin:tag: DateTime (306) - type: string (2) Tag Location: 82 - Data Location: 144 - value: b'2017:05:26 12:57:14\x00'
+DEBUG:PIL.TiffImagePlugin:tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\xa4'
+DEBUG:root:цена - 55
+DEBUG:root:цена из даты - 55
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py changed, reloading.
+DEBUG:root:цена - 212
+DEBUG:root:цена из даты - 212
+ERROR:django.request:Internal Server Error: /add_object/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 152, in post
+    if form.is_valid():
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 196, in errors
+    self.full_clean()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py", line 26, in clean_cost
+    raise cost
+TypeError: exceptions must derive from BaseException
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py changed, reloading.
+DEBUG:root:цена - 212
+DEBUG:root:цена из даты - 212
+INFO:root:Объект успешно Добавлен
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 152, in post
+    if form.is_valid():
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 196, in errors
+    self.full_clean()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py", line 64, in clean_time_end
+    if time_end <= now:
+TypeError: can't compare offset-naive and offset-aware datetimes
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 152, in post
+    if form.is_valid():
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 196, in errors
+    self.full_clean()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py", line 64, in clean_time_end
+    if time_end <= now:
+TypeError: can't compare offset-naive and offset-aware datetimes
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 152, in post
+    if form.is_valid():
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 196, in errors
+    self.full_clean()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py", line 64, in clean_time_end
+    if time_end <= now:
+TypeError: can't compare offset-naive and offset-aware datetimes
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 152, in post
+    if form.is_valid():
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 196, in errors
+    self.full_clean()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\forms\forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py", line 64, in clean_time_end
+    if time_end <= now:
+TypeError: can't compare offset-naive and offset-aware datetimes
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2023, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2023, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-04 21:40:02.921377
+DEBUG:root:2023-06-06 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 219, in form_valid
+    if (time_end - contract.time_create).days:
+TypeError: can't subtract offset-naive and offset-aware datetimes
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2023, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2023, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-04 21:41:03.782835+00:00
+DEBUG:root:2023-06-06 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 219, in form_valid
+    if (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days:
+KeyError: 'time_create'
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2023, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2023, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>, 'time_create': datetime.datetime(2023, 6, 4, 21, 41, 53, 961627, tzinfo=<UTC>)}
+DEBUG:root:None
+DEBUG:root:2023-06-06 00:00:00+03:00
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+WARNING:django.request:Not Found: /my_insurance_contracts/objects
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:django.request:Not Found: /make_contract/objects
+WARNING:django.request:Not Found: /favicon.ico
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 171
+WARNING:django.request:Not Found: /favicon.ico
+ERROR:django.request:Internal Server Error: /edit_object/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view insurance.views.edit_object didn't return an HttpResponse object. It returned None instead.
+ERROR:django.request:Internal Server Error: /edit_object/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view insurance.views.edit_object didn't return an HttpResponse object. It returned None instead.
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\forms.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2030, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2030, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>, 'time_create': datetime.datetime(2023, 6, 5, 12, 20, 17, 524228, tzinfo=<UTC>)}
+DEBUG:root:None
+DEBUG:root:2030-06-05 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 242, in form_valid
+    contract.total_cost = object_cost_with_cat * (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days
+NameError: name 'object_cost_with_cat' is not defined
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2030, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2030, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>, 'time_create': datetime.datetime(2023, 6, 5, 12, 28, 16, 376272, tzinfo=<UTC>)}
+DEBUG:root:None
+DEBUG:root:2030-06-05 00:00:00+03:00
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 125
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-05 12:30:09.171803+00:00
+DEBUG:root:2040-06-05 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 236, in form_valid
+    if (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days:
+KeyError: 'time_create'
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-05 12:30:40.724030+00:00
+DEBUG:root:2040-06-05 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 236, in form_valid
+    if (form.cleaned_data['time_end'] - form.cleaned_data['time_create']).days:
+KeyError: 'time_create'
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-05 12:31:08.480879+00:00
+DEBUG:root:2040-06-05 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 236, in form_valid
+    if (form.time_end - form.cleaned_data['time_create']).days:
+AttributeError: 'MakeContractForm' object has no attribute 'time_end'
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-05 12:31:34.265449+00:00
+DEBUG:root:2040-06-05 00:00:00+03:00
+ERROR:django.request:Internal Server Error: /make_contract/
+Traceback (most recent call last):
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 184, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py", line 236, in form_valid
+    if (contract.time_end - form.cleaned_data['time_create']).days:
+KeyError: 'time_create'
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\views.py changed, reloading.
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: BMW M5>, 'time_end': datetime.datetime(2040, 6, 5, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Иван>}
+DEBUG:root:2023-06-05 12:32:35.068738+00:00
+DEBUG:root:2040-06-05 00:00:00+03:00
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 148
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 124
+DEBUG:root:цена - 1000
+DEBUG:root:цена из даты - 1000
+INFO:root:Объект успешно Добавлен
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 117
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:{'ins_object': <ObjectOfInsurance: Phone>, 'time_end': datetime.datetime(2030, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Петров>}
+DEBUG:root:клин дата - {'ins_object': <ObjectOfInsurance: Phone>, 'time_end': datetime.datetime(2030, 6, 6, 0, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Moscow')), 'ins_agent': <InsuranceAgent: Петров>}
+DEBUG:root:2023-06-06 16:19:16.390301+00:00
+DEBUG:root:2030-06-06 00:00:00+03:00
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 143
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 152
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 222
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 139
+WARNING:django.request:Not Found: /objects/logout
+INFO:django.utils.autoreload:C:\Users\westcrime\course_2\SCCS\Lab4\insuranceagency\insurance\utils.py changed, reloading.

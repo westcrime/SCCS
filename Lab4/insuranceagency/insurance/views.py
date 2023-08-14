@@ -1,9 +1,6 @@
-import datetime
-
-import pytz
+from .services.services import *
 from django.contrib import messages
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
@@ -11,43 +8,33 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
 import logging
-
 from insurance.api.joke import JokeService
-from .api.activity import ActivityService
-from .forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
-from .models import *
+from insurance.api.activity import ActivityService
+from insurance.forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
+from insurance.models import *
 from insurance.utils import DataMixin
 
 
-def logout_user(request):
+def logout_user_link(request):
     logout(request)
     return redirect('home')
 
 
-def activate_contract(request):
-    get = request.GET.get('id')
-    if get is not None:
-        contract = InsuranceContract.objects.get(pk=get)
-        contract.ins_agent.total_earning += contract.total_cost * contract.ins_agent.ins_branch.tariff_rate
-        contract.ins_agent.save()
-
-        contract.is_activated = True
-        contract.save()
-        messages.success(request, "Вы активировали страховку!")
-        return redirect('home')
+def activate_contract_link(request):
+    id = request.GET.get('id')
+    activate_contract(id)
+    messages.success(request, "Вы активировали страховку!")
+    return redirect('home')
 
 
-def delete_object(request):
-    get = request.GET.get('id')
-    if get is not None:
-        object = ObjectOfInsurance.objects.get(pk=get)
-        name = object.name
-        object.delete()
-        messages.success(request, f"Вы удалили: {name}!")
-        return redirect('objects')
+def delete_object_link(request):
+    id = request.GET.get('id')
+    name = delete_object_of_insurance(id)
+    messages.success(request, f"Вы успешно удалили объект: {name}!")
+    return redirect('objects')
 
 
-class InsuranceContracts(LoginRequiredMixin, DataMixin, ListView):
+class InsuranceContractsPage(LoginRequiredMixin, DataMixin, ListView):
     login_url = 'login'
     model = InsuranceContract
     template_name = 'insurance/list_contracts.html'
@@ -59,18 +46,10 @@ class InsuranceContracts(LoginRequiredMixin, DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        InsuranceContract.objects.filter(time_end__lte=datetime.datetime.now()).delete()
-        if self.request.GET.get('sort') == 'time_create':
-            return InsuranceContract.objects.filter(ins_client_id=self.request.user.id).order_by('time_create')
-        elif self.request.GET.get('sort') == 'time_end':
-            return InsuranceContract.objects.filter(ins_client_id=self.request.user.id).order_by('time_end')
-        elif self.request.GET.get('sort') == 'total_cost':
-            return InsuranceContract.objects.filter(ins_client_id=self.request.user.id).order_by('total_cost')
-        else:
-            return InsuranceContract.objects.filter(ins_client_id=self.request.user.id)
+        return get_queryset_of_contracts(self.request)
 
 
-class InsuranceCategories(DataMixin, ListView):
+class InsuranceCategoriesPage(DataMixin, ListView):
     model = InsuranceCategory
     template_name = 'insurance/index.html'
     context_object_name = 'categories'
@@ -79,20 +58,16 @@ class InsuranceCategories(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         joke = JokeService.get_random_joke()
         activity = ActivityService.get_random_activity()
-        context['joke'] = joke['setup'] + ' ' + joke['punchline']
-        context['activity'] = activity['activity']
+        # context['joke'] = joke['setup'] + ' ' + joke['punchline']
+        # context['activity'] = activity['activity']
         c_def = self.get_user_context(title="Главная страница")
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        if self.request.GET.get('sort') == 'name':
-            return InsuranceCategory.objects.order_by('name')
-        if self.request.GET.get('sort') == 'ins_coef':
-            return InsuranceCategory.objects.order_by('ins_coef')
-        return InsuranceCategory.objects.all()
+        return get_queryset_of_categories(self.request)
 
 
-class InsuranceBranches(DataMixin, ListView):
+class InsuranceBranchesPage(DataMixin, ListView):
     model = InsuranceBranch
     template_name = 'insurance/insurancebranches.html'
     context_object_name = 'branches'
@@ -106,7 +81,7 @@ class InsuranceBranches(DataMixin, ListView):
         return InsuranceBranch.objects.all()
 
 
-class InsuranceAgents(DataMixin, ListView):
+class InsuranceAgentsPage(DataMixin, ListView):
     model = InsuranceAgent
     template_name = 'insurance/list_agents.html'
     context_object_name = 'agents'
@@ -117,14 +92,10 @@ class InsuranceAgents(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        if self.request.GET.get('sort') == 'first_name':
-            return InsuranceAgent.objects.order_by('first_name')
-        if self.request.GET.get('sort') == 'total_earning':
-            return InsuranceAgent.objects.order_by('total_earning')
-        return InsuranceAgent.objects.all()
+        return get_queryset_of_agents(self.request)
 
 
-class ObjectsOfInsurance(LoginRequiredMixin, DataMixin, ListView):
+class ObjectsOfInsurancePage(LoginRequiredMixin, DataMixin, ListView):
     login_url = 'login'
     model = ObjectOfInsurance
     template_name = 'insurance/list_objects.html'
@@ -136,11 +107,7 @@ class ObjectsOfInsurance(LoginRequiredMixin, DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        if self.request.GET.get('sort') == 'name':
-            return ObjectOfInsurance.objects.filter(user_id=self.request.user.id).order_by('name')
-        if self.request.GET.get('sort') == 'cost':
-            return ObjectOfInsurance.objects.filter(user_id=self.request.user.id).order_by('cost')
-        return ObjectOfInsurance.objects.filter(user_id=self.request.user.id)
+        return get_queryset_of_objects(self.request)
 
 
 class RegisterUser(DataMixin, CreateView):
@@ -208,7 +175,7 @@ class LoginUser(DataMixin, LoginView):
         return reverse_lazy('home')
 
 
-class MakeContract(LoginRequiredMixin, DataMixin, CreateView):
+class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
     login_url = 'login'
     form_class = MakeContractForm
     template_name = 'insurance/make_contract.html'
@@ -220,26 +187,7 @@ class MakeContract(LoginRequiredMixin, DataMixin, CreateView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def form_valid(self, form):
-        logging.basicConfig(filename='logging.log', encoding='utf-8', level=logging.DEBUG)
-        logging.debug(form.cleaned_data)
-        time_end = form.cleaned_data['time_end']
-        contract = form.save(commit=False)
-        contract.time_create = datetime.datetime.now().replace(tzinfo=pytz.utc)
-        contract.user = self.request.user
-        obj = form.cleaned_data['ins_object']
-        object_cost = obj.cost_with_all_coefs()
-
-        # object_cost_with_cat = object_cost_with_risk * obj.ins_cat.ins_coef
-        logging.debug(f"клин дата - {form.cleaned_data}")
-        logging.debug(contract.time_create)
-        logging.debug(time_end)
-        if (time_end - contract.time_create).days:
-            contract.total_cost = object_cost * (time_end - contract.time_create).days
-        else:
-            contract.total_cost = object_cost
-        contract.ins_client = self.request.user
-
-        contract = form.save()
+        make_contract(self.request, form)
         messages.success(self.request, "Вы оформили страховку, можете узнать ее цену и активировать в МОИХ ДОГОВОРАХ")
         return redirect('home')
 

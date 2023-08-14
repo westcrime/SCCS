@@ -27,6 +27,7 @@ class DataMixin:
             context['username'] = self.request.user.username
 
         context['menu'] = user_menu
+        context['logout_url'] = 'logout'
 
         context['sidebar_menu'] = user_sidebar_menu
         return context

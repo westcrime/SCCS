@@ -42,7 +42,7 @@
 
 {% endfor %}
 		{% if user.is_authenticated %}
-			<li><a href="logout">Выйти</a></li>
+			<li><a href="{% url logout_url %}">Выйти</a></li>
 		{% endif %}
 	</ul>
 </td>
