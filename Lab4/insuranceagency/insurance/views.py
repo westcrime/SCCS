@@ -152,9 +152,7 @@ def edit_object(request):
     if request.method == 'POST':
         form = EditObjectForm(request.POST, instance=object)
         if form.is_valid():
-            # update the existing `Band` in the database
             form.save()
-            # redirect to the detail page of the `Band` we just updated
             return redirect('objects')
     else:
         form = EditObjectForm(instance=object,)
