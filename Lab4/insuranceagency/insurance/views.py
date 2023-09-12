@@ -1,18 +1,20 @@
-from .services.services import *
-from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import logout, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from .services.services import *
+from django.contrib import messages
+from django.contrib import auth
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
 import logging
-from insurance.api.joke import JokeService
-from insurance.api.activity import ActivityService
-from insurance.forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
-from insurance.models import *
-from insurance.utils import DataMixin
+# from api.joke import JokeService
+# from api.activity import ActivityService
+from .forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
+from .models import *
+from .utils import DataMixin
 
 
 def logout_user_link(request):
@@ -56,8 +58,8 @@ class InsuranceCategoriesPage(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        joke = JokeService.get_random_joke()
-        activity = ActivityService.get_random_activity()
+        # joke = JokeService.get_random_joke()
+        # activity = ActivityService.get_random_activity()
         # context['joke'] = joke['setup'] + ' ' + joke['punchline']
         # context['activity'] = activity['activity']
         c_def = self.get_user_context(title="Главная страница")
@@ -159,18 +161,29 @@ def edit_object(request):
         return render(request, 'insurance/edit_object.html', {'form': form})
 
 
-class LoginUser(DataMixin, LoginView):
-    form_class = AuthenticationForm
-    template_name = 'insurance/login.html'
+def LoginUser(request):
+    # if this is a POST request we need to process the form data
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        form = AuthenticationForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Авторизация")
-        return dict(list(context.items()) + list(c_def.items()))
+            user = auth.authenticate(username=username, password=password)
 
-    def get_success_url(self):
-        logging.info("Пользователь успешно авторизован")
-        return reverse_lazy('home')
+            if user:
+                auth.login(request, user)
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse_lazy('home'))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "insurance/login.html", {"form": form})
 
 
 class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
