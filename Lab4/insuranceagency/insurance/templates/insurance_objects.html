@@ -1,11 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for msg in messages %}
-		<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		  <strong>Внимание!</strong> {{ msg }}
-		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		</div>
-	{% endfor %}
 <a class="btn btn-primary" href="/add_object" role="button">Зарегистрировать новый объект</a>
 <h1>Ваши объекты</h1>
 

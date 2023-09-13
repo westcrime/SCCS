@@ -5,37 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68087ae8-f7a1-4d5d-8496-98ab0830c094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/authentication/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/list_menu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/list_second_menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/images/adv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/images/facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/images/github.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/images/instagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/add_object.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/add_object.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/edit_object.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/edit_object.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/insurancebranches.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_branches.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/list_agents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_agents.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/list_contracts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/list_contracts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/list_menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/list_objects.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_objects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/list_sidebar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/make_contract.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/make_contract.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/authentication/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/services/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/services/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_agents.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_agents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_objects.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/insurance_objects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/list_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/list_menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templatetags/insurance_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templatetags/insurance_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insurance/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insuranceagency/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insuranceagency/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4/insuranceagency/insuranceagency/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/insuranceagency/insuranceagency/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,26 +49,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Lab4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/westcrime/SCCS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Lab4",
+    "last_opened_file_path": "/home/westcrime/SCCS/Lab4/insuranceagency/insurance/static/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Lab4/insuranceagency/insurance/static/images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Lab4/insuranceagency/insurance" />
+      <recent name="$PROJECT_DIR$/Lab4/insuranceagency/" />
       <recent name="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates/authentication" />
       <recent name="$PROJECT_DIR$/Lab4/insuranceagency/insurance/templates" />
-      <recent name="$PROJECT_DIR$/Lab4/insuranceagency/insurance" />
       <recent name="$PROJECT_DIR$/Lab4/insuranceagency" />
     </key>
   </component>
@@ -105,6 +111,7 @@
       <updated>1694514749500</updated>
       <workItem from="1694514750672" duration="7855000" />
       <workItem from="1694593628300" duration="14470000" />
+      <workItem from="1694612817856" duration="11639000" />
     </task>
     <servers />
   </component>

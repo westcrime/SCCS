@@ -7,7 +7,7 @@ register = template.Library()
 def show_menu(menu=None):
     menu = [{'title': "На главную", 'url_name': 'home'},
             {'title': "Заключить договор", 'url_name': 'make_contract'},
-            {'title': "Обратная связь", 'url_name': 'contact'}
+            {'title': "О сайте", 'url_name': 'about'}
             ]
 
     return {"menu": menu}

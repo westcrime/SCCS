@@ -1,27 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<div class="container">
+    <h1>Возможные виды страхований</h1>
 
-<h1>Возможные виды страхований</h1>
 
-<p style="font-size:75%;"><a href="/Lab4/insuranceagency/insurance/static?sort=name">Сортировать по имени</a></p>
-<p style="font-size:75%;"><a href="/Lab4/insuranceagency/insurance/static?sort=ins_coef">Сортировать по стоимости</a></p>
-<p>Шутка: {{joke}}</p>
-<p>Рандомное занятие: {{activity}}</p>
-<ul class="list-articles">
+    {% block ad %}
+        <div class="container">
+            <div class="card" style="width: 250px; height: 150px; margin: 10px; float:right;">
+                  <img src="{% static 'images/adv.png' %}" class="card-img-top" alt="Реклама">
+              <div class="card-body">
+                  <a class="card-text" href="https://1xbet.by/">Регистрируйся по ссылке и потрать все деньги с зарплаты!</a>
+              </div>
+        </div>
+    {% endblock %}
 
-	{% for p in categories %}
-			<li><div class="article-panel">
-	<p class="first">Категория: {{p.name}}</p>
+    <div class="d-flex flex-column">
+        <div class="p2">
+            <a class="btn btn-outline-primary" href="?sort=name" style="margin: 5px">Сортировать по имени</a>
+        </div>
+        <div class="p2">
+            <a class="btn btn-outline-primary" href="?sort=ins_coef" style="margin: 5px">Сортировать по стоимости страховки</a>
+        </div>
+    </div>
+    <p><q>Мы беспокоимся о том, чтобы вы не беспокоились</q>Толстой Д. В., основатель компании</p>
+    <p>Шутка: {{ joke }}</p>
+    <p>Рандомное занятие: {{ activity }}</p>
+    <ul class="list-articles">
+
+    {% for p in categories %}
+        <li class="card w-50" style="width: 32rem;">
+            <img class="card-img-top" src="{{ p.photo.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ p.name }}</h5>
+                <p class="card-text">{{ p.content }}</p>
+            </div>
+        </li>
+        <br>
+    {% endfor %}
+    </ul>
+    {% endblock %}
+
 </div>
-{% if p.photo %}
-	<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
-{% endif %}
-				<h2>{{p.name}}</h2>
-	{% autoescape on %}
-	{{p.content|linebreaks|truncatewords:50}}
-	{% endautoescape %}
-			<div class="clear"></div>
-			</li>
-	{% endfor %}
-</ul>
-{% endblock %}

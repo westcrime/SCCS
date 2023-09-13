@@ -2,6 +2,9 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+
+from .api.activity import ActivityService
+from .api.joke import JokeService
 from .services.services import *
 from django.contrib import messages
 from django.contrib import auth
@@ -70,9 +73,22 @@ def activate_contract_link(request):
 
 def delete_object_link(request):
     id = request.GET.get('id')
-    name = delete_object_of_insurance(id)
+    try:
+        name = delete_object_of_insurance(id, request)
+    except:
+        messages.warning(request, f"Возникли ошибки при удалении: {name}!")
+        return redirect('insurance_objects')
     messages.success(request, f"Вы успешно удалили объект: {name}!")
-    return redirect('objects')
+    return redirect('insurance_objects')
+
+
+def about(request):
+    context = {}
+    for i in range(0, 3):
+        joke = JokeService.get_random_joke()
+        context[f'joke{i + 1}'] = joke['setup'] + '-' + joke['punchline']
+        context[f'activity{i + 1}'] = ActivityService.get_random_activity()['activity']
+    return render(request, 'about.html', context)
 
 
 class InsuranceContractsPage(LoginRequiredMixin, DataMixin, ListView):
@@ -98,10 +114,10 @@ class InsuranceCategoriesPage(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        # joke = JokeService.get_random_joke()
-        # activity = ActivityService.get_random_activity()
-        # context['joke'] = joke['setup'] + ' ' + joke['punchline']
-        # context['activity'] = activity['activity']
+        joke = JokeService.get_random_joke()
+        activity = ActivityService.get_random_activity()
+        context['joke'] = joke['setup'] + ' ' + joke['punchline']
+        context['activity'] = activity['activity']
         context['cat_selected'] = ''
         c_def = self.get_user_context(title="Главная страница")
         return dict(list(context.items()) + list(c_def.items()))
@@ -153,9 +169,6 @@ class ObjectsOfInsurancePage(LoginRequiredMixin, DataMixin, ListView):
         return get_queryset_of_objects(self.request)
 
 
-
-
-
 class AddObject(LoginRequiredMixin, DataMixin, CreateView):
     login_url = 'login'
     form_class = AddObjectForm
@@ -178,15 +191,17 @@ class AddObject(LoginRequiredMixin, DataMixin, CreateView):
 def edit_object(request):
     id = request.GET.get('id')
     object = ObjectOfInsurance.objects.get(id=id)
-    if request.method == 'POST':
-        form = EditObjectForm(request.POST, instance=object)
-        if form.is_valid():
-            form.save()
-            return redirect('objects')
+    if object.user.id == request.user.id:
+        if request.method == 'POST':
+            form = EditObjectForm(request.POST, instance=object)
+            if form.is_valid():
+                form.save()
+                return redirect('insurance_objects')
+        else:
+            form = EditObjectForm(instance=object, )
+            return render(request, 'edit_object.html', {'form': form})
     else:
-        form = EditObjectForm(instance=object,)
-        return render(request, 'edit_object.html', {'form': form})
-
+        raise Exception(f"Cant edit ({object.user} - objects user id, {request.user.id} - current users id)")
 
 
 class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
@@ -204,4 +219,3 @@ class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
         make_contract(self.request, form)
         messages.success(self.request, "Вы оформили страховку, можете узнать ее цену и активировать в МОИХ ДОГОВОРАХ")
         return redirect('home')
-
