@@ -1,15 +1,10 @@
-{% extends 'insurance/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
-{% for msg in messages %}
-		<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		  <strong>Внимание!</strong> {{ msg }}
-		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		</div>
-	{% endfor %}
+
 <h1>Возможные виды страхований</h1>
 
-<p style="font-size:75%;"><a href="/?sort=name">Сортировать по имени</a></p>
-<p style="font-size:75%;"><a href="/?sort=ins_coef">Сортировать по стоимости</a></p>
+<p style="font-size:75%;"><a href="/Lab4/insuranceagency/insurance/static?sort=name">Сортировать по имени</a></p>
+<p style="font-size:75%;"><a href="/Lab4/insuranceagency/insurance/static?sort=ins_coef">Сортировать по стоимости</a></p>
 <p>Шутка: {{joke}}</p>
 <p>Рандомное занятие: {{activity}}</p>
 <ul class="list-articles">

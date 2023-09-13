@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if form.errors %}
+        <div class="alert alert-primary" role="alert">
+            <p>Возникли ошибки с регистрацией</p>
+        </div>
+    {% endif %}
+    <div class="container">
+        <h1>Регистрация пользователя</h1>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <br></br>
+
+            <button type="submit">Зарегистрировать</button>
+        </form>
+    </div>
+{% endblock %}

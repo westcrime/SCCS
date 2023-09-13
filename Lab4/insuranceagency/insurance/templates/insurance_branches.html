@@ -1,4 +1,4 @@
-{% extends 'insurance/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 <h1>Филиалы нашего агенства</h1>
 <ul class="list-articles">
@@ -9,7 +9,6 @@
 
 	<p>Адрес: {{ b.address }}</p>
 	<p>Номер телефона: {{ b.phone_number }}</p>
-	<p class="link-read-post"><a href="make_contract?branch={{ b.pk }}/">Заключить договор здесь</a></p>
 			<div class="clear"></div>
 			</li>
 	{% endfor %}

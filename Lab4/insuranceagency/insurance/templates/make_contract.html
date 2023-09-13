@@ -1,10 +1,9 @@
-{% extends 'insurance/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-  <h1>Отредактировать объект</h1>
+<h1>{{title}}</h1>
 
-
-<form action="" method="post" enctype="multipart/form-data">
+<form method="post">
     {% csrf_token %}
 
 {% for f in form %}
@@ -14,4 +13,5 @@
 
     <button type="submit">Подтвердить</button>
 </form>
+
 {% endblock %}

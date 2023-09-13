@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+{% load insurance_tags %}
+<html lang="ru">
 <head>
-	<title>{{title}}</title
+	<title>{{title}}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,18 +15,10 @@
 <body>
 	<!-- Панель навигации -->
 	<!-- Панель ссылок -->
-	<nav class="navbar navbar-expand-lg">
-		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1">
-				Агенство страхования <br> Толстого Дмитрия
-			</span>
-			<ul class="navbar-nav">
-				{% for m in menu %}
-				<li class="nav-item">
-					<a class="nav-link" href="{% url m.url_name %}">{{m.title}}</a>
-				</li>
-				{% endfor %}
-			</ul>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container">
+
+            {% show_menu %}
 
 			<!-- Информация пользователя -->
 			{% if not user.is_authenticated %}
@@ -51,9 +44,9 @@
 					<li><hr class="dropdown-divider"></li>
 					<li>
 						<form id="logoutForm" class="form-inline">
-							<button id="logout" type="submit" class="nav-link btn btn-link text-dark" href="{% url 'logout' %}">
+							<a class="nav-link" href="{% url 'logout' %}">
 								Выйти из профиля
-							</button>
+							</a>
 						</form>
 					</li>
 				</ul>
@@ -63,37 +56,21 @@
 		</div>
 	</nav>
 
-  	<nav class="collapse d-lg-block sidebar collapse">
-		<!--{% for c in sidebar_menu %}
-
-		{% if c.url_name == cat_selected %}
-			<li class="selected">{{c.title}}</li>
-		{% else %}
-			<li><a href="{% url c.url_name %}">{{c.title}}</a></li>
-		{% endif %}
-
-		{% endfor %}
-				{% for c in sidebar_menu %}
-				{% if c.url_name == cat_selected %}
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{% url c.url_name %}">{{c.title}}</a>
-				</li>
-				{% else %}
-				<li class="nav-item">
-					<a class="nav-link" href="{% url c.url_name %}">{{c.title}}</a>
-				</li>
-				{% endif %}
-				{% endfor %}-->
-		<div class="container-fluid my-class">	
-			<ul class="nav nav-underline">
-				{% for c in sidebar_menu %}
-				<li class="nav-item">
-					<a style="text-decoration:none" class="nav-link" href="{% url c.url_name %}">{{c.title}}</a>
-				</li>
-				{% endfor %}
-			</ul>
+  	<nav class="navbar navbar-expand-lg">
+		<div class="container-fluid">
+            {% show_second_menu cat_selected=request.path %}
 		</div>
   	</nav>
+
+    <div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-primary" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
 
 	{% block content %}
 	{% endblock %}
