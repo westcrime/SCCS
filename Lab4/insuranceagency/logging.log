@@ -642,3 +642,51 @@ DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-ap
 DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
 DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 143
+DEBUG:root:цена - 57000
+DEBUG:root:цена из даты - 57000
+INFO:root:Объект успешно Добавлен
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 149
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 142
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 153
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 134
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 135
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 148
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 120
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 131
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 144
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 173
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 121

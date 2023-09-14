@@ -8,19 +8,18 @@
 
 <ul class="list-articles">
 	{% for o in objects %}
-			<li><div class="article-panel">
-	<p class="first">Название объекта: {{o.name}}</p>
-</div>
-	{% if o.photo %}
-	<p><img class="img-article-left thumb" src="{{o.photo.url}}"></p>
-	{% endif %}
-	<p class="first">Цена объекта: {{o.cost}} $</p>
-	<p class="first">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
-	<p class="first">Категория страховки: {{o.ins_cat.name}}</p>
-	<p class="link-read-post"><a href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a></p>
-	<p class="link-read-post"><a href="/edit_object?id={{ o.id }}">Изменить данные (Некоторые)</a></p>
-			<div class="clear"></div>
+	        <li class="card w-50" style="width: 32rem;">
+				<img class="card-img-top" src="{{ o.photo.url }}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">{{ o.name }}</h5>
+						<p class="card-text">Цена объекта: {{o.cost}} $</p>
+						<p class="card-text">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
+						<p class="card-text">Категория страховки: {{o.ins_cat.name}}</p>
+						<a class="btn btn-primary" href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a>
+						<a class="btn btn-primary" href="/edit_object?id={{ o.id }}">Изменить данные (Некоторые)</a>
+					</div>
 			</li>
+			<br>
 	{% endfor %}
 </ul>
 {% endblock %}

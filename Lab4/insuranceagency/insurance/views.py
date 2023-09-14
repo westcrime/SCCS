@@ -83,7 +83,7 @@ def delete_object_link(request):
 
 
 def about(request):
-    context = {}
+    context = {'active_contracts': InsuranceContract.objects.filter(is_activated=True).count()}
     for i in range(0, 3):
         joke = JokeService.get_random_joke()
         context[f'joke{i + 1}'] = joke['setup'] + '-' + joke['punchline']
