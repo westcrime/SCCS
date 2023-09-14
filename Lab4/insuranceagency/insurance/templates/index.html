@@ -6,13 +6,16 @@
 
 
     {% block ad %}
-        <div class="container">
-            <div class="card" style="width: 250px; height: 150px; margin: 10px; float:right;">
-                  <img src="{% static 'images/adv.png' %}" class="card-img-top" alt="Реклама">
-              <div class="card-body">
-                  <a class="card-text" href="https://1xbet.by/">Регистрируйся по ссылке и потрать все деньги с зарплаты!</a>
-              </div>
-        </div>
+        <a href="https://1xbet.by/">
+            <div class="container">
+                <div class="card" style="width: 250px; height: 150px; margin: 10px; float:right;">
+                      <img src="{% static 'images/adv.png' %}" class="card-img-top" alt="Реклама">
+                  <div class="card-body">
+                      <p class="card-text">Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
+                  </div>
+                </div>
+            </div>
+        </a>
     {% endblock %}
 
     <div class="d-flex flex-column">

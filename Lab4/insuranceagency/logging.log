@@ -635,3 +635,10 @@ INFO:django.utils.autoreload:/home/westcrime/SCCS/Lab4/insuranceagency/insurance
 DEBUG:root:цена - 4664
 DEBUG:root:цена из даты - 4664
 INFO:root:Объект успешно Добавлен
+DEBUG:root:цена - 12500
+DEBUG:root:цена из даты - 12500
+INFO:root:Объект успешно Добавлен
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 143
