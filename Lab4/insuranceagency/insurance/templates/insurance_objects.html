@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="btn btn-primary" href="/add_object" role="button">Зарегистрировать новый объект</a>
+<h1>Ваши объекты</h1>
+
+<p style="font-size:75%;"><a href="/objects?sort=name">Сортировать по имени</a></p>
+<p style="font-size:75%;"><a href="/objects?sort=cost">Сортировать по стоимости</a></p>
+
+<ul class="list-articles">
+	{% for o in objects %}
+	        <li class="card w-50" style="width: 32rem;">
+				<img class="card-img-top" src="{{ o.photo.url }}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">{{ o.name }}</h5>
+						<p class="card-text">Цена объекта: {{o.cost}} $</p>
+						<p class="card-text">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
+						<p class="card-text">Категория страховки: {{o.ins_cat.name}}</p>
+						<a class="btn btn-primary" href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a>
+						<a class="btn btn-primary" href="/edit_object?id={{ o.id }}">Изменить данные (Некоторые)</a>
+					</div>
+			</li>
+			<br>
+	{% endfor %}
+</ul>
+{% endblock %}

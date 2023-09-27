@@ -1,0 +1,14 @@
+{% load static %}
+<div class="container-fluid">
+    <ul class="navbar-nav" style="float: left">
+        <a class="navbar-brand" href='{% url 'home' %}'>
+            <img src="{% static 'images/logo.png' %}" alt="logo" width="60" height="48" class="d-inline-block align-text-top">
+            Агентство страхования
+        </a>
+        {% for m in menu %}
+            <li class="nav-item bg-primary">
+                <a class="nav-link bg-primary" href="{% url m.url_name %}">{{m.title}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

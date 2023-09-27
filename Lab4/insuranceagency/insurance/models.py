@@ -35,9 +35,9 @@ class ObjectOfInsurance(models.Model):
     photo = models.ImageField(null=True, upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
     name = models.CharField(default="Какой-то объект", max_length=100, db_index=True, verbose_name="Название объекта страхования")
     insured_risks = models.CharField(max_length=11, choices=InsuredRisks.choices, default=InsuredRisks.LOW, verbose_name="Категория рисков")
-    ins_cat = models.ForeignKey('InsuranceCategory', on_delete=models.PROTECT, verbose_name="Вид страхования")
+    ins_cat = models.ForeignKey('InsuranceCategory', on_delete=models.CASCADE, verbose_name="Вид страхования")
     cost = models.IntegerField(default=0, verbose_name='Цена объекта')
-    user = models.ForeignKey('User', on_delete=models.SET_DEFAULT, default=None, verbose_name="Владелец объекта")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, default=None, verbose_name="Владелец объекта")
 
     def __str__(self):
         return self.name
@@ -69,7 +69,7 @@ class InsuranceAgent(models.Model):
                                  message="Телефонный номер должен быть введен в формате: '+37529xxxxxxx'. Разрешено до 15 цифр")
     phone_number = models.CharField(validators=[phone_regex], unique=True, max_length=17,
                                     blank=True)  # Validators should be a list
-    ins_branch = models.ForeignKey('InsuranceBranch', on_delete=models.PROTECT, verbose_name="Филиал страхования")
+    ins_branch = models.ForeignKey('InsuranceBranch', on_delete=models.CASCADE, verbose_name="Филиал страхования")
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
 
     def __str__(self):
@@ -110,8 +110,8 @@ class InsuranceContract(models.Model):
     ins_object = models.ForeignKey('ObjectOfInsurance', on_delete=models.CASCADE, verbose_name="Объект страхования")
     time_create = models.DateTimeField(null=True, blank=True, verbose_name="Дата и время заключения")
     time_end = models.DateTimeField(null=True, blank=True, verbose_name="Дата и время окончания договора")
-    ins_agent = models.ForeignKey('InsuranceAgent', on_delete=models.PROTECT, verbose_name="агент страхования")
-    ins_client = models.ForeignKey('User', on_delete=models.PROTECT, verbose_name="Клиент страхования")
+    ins_agent = models.ForeignKey('InsuranceAgent', on_delete=models.CASCADE, verbose_name="агент страхования")
+    ins_client = models.ForeignKey('User', on_delete=models.CASCADE, verbose_name="Клиент страхования")
     total_cost = models.FloatField(null=True, blank=True, help_text='Общая цена услуги', verbose_name='Общая цена услуги')
 
     def get_absolute_url(self):
@@ -126,4 +126,4 @@ class InsuranceContract(models.Model):
 class User(AbstractUser):
     phone_regex = RegexValidator(regex=r'^\+37529\d{7}$', message="Телефонный номер должен быть введен в формате: "
                                                                   "'+37529xxxxxxx'. Разрешено до 15 цифр")
-    phone_number = models.CharField(validators=[phone_regex], unique=True, max_length=17)  # Validators
+    phone_number = models.CharField(validators=[phone_regex], unique=True, max_length=17, null=True, blank=True)  # Validators

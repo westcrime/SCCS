@@ -1,8 +1,8 @@
 import datetime
 import pytz
-from insurance.models import *
-from insurance.views import *
-from insurance.models import *
+from django.contrib import auth
+
+from ..models import *
 
 
 def activate_contract(id: int):
@@ -16,15 +16,17 @@ def activate_contract(id: int):
     contract.save()
 
 
-def delete_object_of_insurance(id: int):
+def delete_object_of_insurance(id: int, request):
     """Функция удаления объекта страховки конкретного пользователя"""
     if id is None:
         raise Exception("Deleting of object of insurance exception!")
     object = ObjectOfInsurance.objects.get(pk=id)
-    name = object.name
-    object.delete()
-    return name
-
+    if object.user.id == request.user.id:
+        name = object.name
+        object.delete()
+        return name
+    else:
+        raise Exception("Deleting of object of insurance exception!")
 
 def get_queryset_of_contracts(request):
     """Получение списка контрактов, отсортированного по выбранному пользователем признаку"""
@@ -60,8 +62,8 @@ def get_queryset_of_objects(request):
     sort_factor = request.GET.get('sort')
     available_sort_factors = ['name', 'cost']
     if sort_factor in available_sort_factors:
-        return ObjectOfInsurance.objects.order_by(sort_factor)
-    return ObjectOfInsurance.objects.all()
+        return ObjectOfInsurance.objects.filter(user_id=request.user.id).order_by(sort_factor)
+    return ObjectOfInsurance.objects.filter(user_id=request.user.id)
 
 
 def make_contract(request, form):

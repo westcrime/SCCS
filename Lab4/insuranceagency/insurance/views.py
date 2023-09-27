@@ -1,23 +1,67 @@
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+
+from .api.activity import ActivityService
+from .api.joke import JokeService
 from .services.services import *
 from django.contrib import messages
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import auth
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
 import logging
-from insurance.api.joke import JokeService
-from insurance.api.activity import ActivityService
-from insurance.forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
-from insurance.models import *
-from insurance.utils import DataMixin
+# from api.joke import JokeService
+# from api.activity import ActivityService
+from .forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
+from .models import *
+from .utils import DataMixin
 
 
-def logout_user_link(request):
-    logout(request)
+def login_user(request):
+    # if this is a POST request we need to process the form data
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(request, username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home')
+        else:
+            messages.success(request, ('Пароль или/и имя пользователя не верны, попробуйте еще раз...'))
+            return redirect('login')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        return render(request, 'authentication/login.html')
+
+
+def logout_user(request):
+    auth.logout(request)
+    messages.success(request, ('Вы успешно вышли из своего профиля...'))
     return redirect('home')
+
+
+def register_user(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "Пользователь успешно зарегистрирован...")
+            return redirect('home')
+    else:
+        form = RegisterUserForm()
+
+    return render(request, 'authentication/register.html', {
+        'form': form,
+    })
 
 
 def activate_contract_link(request):
@@ -29,20 +73,34 @@ def activate_contract_link(request):
 
 def delete_object_link(request):
     id = request.GET.get('id')
-    name = delete_object_of_insurance(id)
+    try:
+        name = delete_object_of_insurance(id, request)
+    except:
+        messages.warning(request, f"Возникли ошибки при удалении: {name}!")
+        return redirect('insurance_objects')
     messages.success(request, f"Вы успешно удалили объект: {name}!")
-    return redirect('objects')
+    return redirect('insurance_objects')
+
+
+def about(request):
+    context = {'active_contracts': InsuranceContract.objects.filter(is_activated=True).count()}
+    for i in range(0, 3):
+        joke = JokeService.get_random_joke()
+        context[f'joke{i + 1}'] = joke['setup'] + '-' + joke['punchline']
+        context[f'activity{i + 1}'] = ActivityService.get_random_activity()['activity']
+    return render(request, 'about.html', context)
 
 
 class InsuranceContractsPage(LoginRequiredMixin, DataMixin, ListView):
     login_url = 'login'
     model = InsuranceContract
-    template_name = 'insurance/list_contracts.html'
+    template_name = 'list_contracts.html'
     context_object_name = 'contracts'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Ваши страховочные контракты")
+        context['cat_selected'] = 'my_insurance_contracts'
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
@@ -51,15 +109,16 @@ class InsuranceContractsPage(LoginRequiredMixin, DataMixin, ListView):
 
 class InsuranceCategoriesPage(DataMixin, ListView):
     model = InsuranceCategory
-    template_name = 'insurance/index.html'
+    template_name = 'index.html'
     context_object_name = 'categories'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         joke = JokeService.get_random_joke()
         activity = ActivityService.get_random_activity()
-        # context['joke'] = joke['setup'] + ' ' + joke['punchline']
-        # context['activity'] = activity['activity']
+        context['joke'] = joke['setup'] + ' ' + joke['punchline']
+        context['activity'] = activity['activity']
+        context['cat_selected'] = ''
         c_def = self.get_user_context(title="Главная страница")
         return dict(list(context.items()) + list(c_def.items()))
 
@@ -69,7 +128,7 @@ class InsuranceCategoriesPage(DataMixin, ListView):
 
 class InsuranceBranchesPage(DataMixin, ListView):
     model = InsuranceBranch
-    template_name = 'insurance/insurancebranches.html'
+    template_name = 'insurance_branches.html'
     context_object_name = 'branches'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -83,7 +142,7 @@ class InsuranceBranchesPage(DataMixin, ListView):
 
 class InsuranceAgentsPage(DataMixin, ListView):
     model = InsuranceAgent
-    template_name = 'insurance/list_agents.html'
+    template_name = 'insurance_agents.html'
     context_object_name = 'agents'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -98,7 +157,7 @@ class InsuranceAgentsPage(DataMixin, ListView):
 class ObjectsOfInsurancePage(LoginRequiredMixin, DataMixin, ListView):
     login_url = 'login'
     model = ObjectOfInsurance
-    template_name = 'insurance/list_objects.html'
+    template_name = 'insurance_objects.html'
     context_object_name = 'objects'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -110,27 +169,10 @@ class ObjectsOfInsurancePage(LoginRequiredMixin, DataMixin, ListView):
         return get_queryset_of_objects(self.request)
 
 
-class RegisterUser(DataMixin, CreateView):
-    form_class = RegisterUserForm
-    template_name = 'insurance/register.html'
-    success_url = reverse_lazy('login')
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Регистрация")
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def form_valid(self, form):
-        user = form.save()
-        logging.info("Пользователь успешно зарегистрирован")
-        login(self.request, user)
-        return redirect('home')
-
-
 class AddObject(LoginRequiredMixin, DataMixin, CreateView):
     login_url = 'login'
     form_class = AddObjectForm
-    template_name = 'insurance/add_object.html'
+    template_name = 'add_object.html'
     success_url = reverse_lazy('home')
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -149,34 +191,23 @@ class AddObject(LoginRequiredMixin, DataMixin, CreateView):
 def edit_object(request):
     id = request.GET.get('id')
     object = ObjectOfInsurance.objects.get(id=id)
-    if request.method == 'POST':
-        form = EditObjectForm(request.POST, instance=object)
-        if form.is_valid():
-            form.save()
-            return redirect('objects')
+    if object.user.id == request.user.id:
+        if request.method == 'POST':
+            form = EditObjectForm(request.POST, instance=object)
+            if form.is_valid():
+                form.save()
+                return redirect('insurance_objects')
+        else:
+            form = EditObjectForm(instance=object, )
+            return render(request, 'edit_object.html', {'form': form})
     else:
-        form = EditObjectForm(instance=object,)
-        return render(request, 'insurance/edit_object.html', {'form': form})
-
-
-class LoginUser(DataMixin, LoginView):
-    form_class = AuthenticationForm
-    template_name = 'insurance/login.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Авторизация")
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def get_success_url(self):
-        logging.info("Пользователь успешно авторизован")
-        return reverse_lazy('home')
+        raise Exception(f"Cant edit ({object.user} - objects user id, {request.user.id} - current users id)")
 
 
 class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
     login_url = 'login'
     form_class = MakeContractForm
-    template_name = 'insurance/make_contract.html'
+    template_name = 'make_contract.html'
     success_url = reverse_lazy('home')
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -188,4 +219,3 @@ class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
         make_contract(self.request, form)
         messages.success(self.request, "Вы оформили страховку, можете узнать ее цену и активировать в МОИХ ДОГОВОРАХ")
         return redirect('home')
-

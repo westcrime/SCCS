@@ -31,7 +31,7 @@ class TestViews(TestCase):
 
         response = client.get(reverse('list_agents'))
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'insurance/list_agents.html')
+        self.assertTemplateUsed(response, 'insurance/insurance_agents.html')
 
     def test_register_GET(self):
         client = Client()
@@ -51,7 +51,7 @@ class TestViews(TestCase):
 
         response = client.get(reverse('insurance_branches'))
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'insurance/insurancebranches.html')
+        self.assertTemplateUsed(response, 'insurance/insurance_branches.html')
 
     def test_DELETE_deletes_object(self):
         user = User.objects.create(phone_number='+375293068221',
