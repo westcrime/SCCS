@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 
-@register.inclusion_tag('list_menu.html')
+@register.inclusion_tag('main_menu.html')
 def show_menu(menu=None):
     menu = [{'title': "На главную", 'url_name': 'home'},
             {'title': "Заключить договор", 'url_name': 'make_contract'},
@@ -13,7 +13,7 @@ def show_menu(menu=None):
     return {"menu": menu}
 
 
-@register.inclusion_tag('list_second_menu.html')
+@register.inclusion_tag('second_menu.html')
 def show_second_menu(menu=None, cat_selected="insurance_branches"):
     menu = [{'title': "Список филиалов", 'url_name': 'insurance_branches'},
             {'title': "Список объектов", 'url_name': 'insurance_objects'},

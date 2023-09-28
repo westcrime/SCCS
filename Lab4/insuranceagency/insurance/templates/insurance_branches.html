@@ -1,16 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Филиалы нашего агенства</h1>
-<ul class="list-articles">
+<ul>
 	{% for b in branches %}
-			<li><div class="article-panel">
-	<p class="first">Филиал: {{b.name}}</p>
-</div>
-
-	<p>Адрес: {{ b.address }}</p>
-	<p>Номер телефона: {{ b.phone_number }}</p>
-			<div class="clear"></div>
-			</li>
+		<p>Филиал: {{b.name}}</p>
+		<p>Адрес: {{ b.address }}</p>
+		<p>Номер телефона: {{ b.phone_number }}</p>
 	{% endfor %}
 </ul>
 {% endblock %}

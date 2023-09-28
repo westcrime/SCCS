@@ -7,26 +7,14 @@
 
     {% block ad %}
         <a href="https://1xbet.by/">
-            <div class="container">
-                <div class="card" style="width: 250px; height: 150px; margin: 10px; float:right;">
-                      <img src="{% static 'images/adv.png' %}" class="card-img-top" alt="Реклама">
-                  <div class="card-body">
-                      <p class="card-text">Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
-                  </div>
-                </div>
-            </div>
+            <img src="{% static 'images/adv.png' %}" class="card-img-top" alt="Реклама">
+            <p class="card-text">Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
         </a>
     {% endblock %}
 
-    <div class="d-flex flex-column">
-        <div class="p2">
-            <a class="btn btn-outline-primary" href="?sort=name" style="margin: 5px">Сортировать по имени</a>
-        </div>
-        <div class="p2">
-            <a class="btn btn-outline-primary" href="?sort=ins_coef" style="margin: 5px">Сортировать по стоимости страховки</a>
-        </div>
-    </div>
-    <p><q>Мы беспокоимся о том, чтобы вы не беспокоились</q>Толстой Д. В., основатель компании</p>
+    <a href="?sort=name">Сортировать по имени</a>
+    <a href="?sort=ins_coef">Сортировать по стоимости страховки</a>
+        
     <p>Шутка: {{ joke }}</p>
     <p>Рандомное занятие: {{ activity }}</p>
     <ul class="list-articles">

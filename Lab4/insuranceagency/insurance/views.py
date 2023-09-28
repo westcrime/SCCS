@@ -17,7 +17,6 @@ import logging
 # from api.activity import ActivityService
 from .forms import RegisterUserForm, MakeContractForm, AddObjectForm, EditObjectForm
 from .models import *
-from .utils import DataMixin
 
 
 def login_user(request):
@@ -91,7 +90,7 @@ def about(request):
     return render(request, 'about.html', context)
 
 
-class InsuranceContractsPage(LoginRequiredMixin, DataMixin, ListView):
+class InsuranceContractsPage(LoginRequiredMixin, ListView):
     login_url = 'login'
     model = InsuranceContract
     template_name = 'list_contracts.html'
@@ -107,7 +106,7 @@ class InsuranceContractsPage(LoginRequiredMixin, DataMixin, ListView):
         return get_queryset_of_contracts(self.request)
 
 
-class InsuranceCategoriesPage(DataMixin, ListView):
+class InsuranceCategoriesPage(ListView):
     model = InsuranceCategory
     template_name = 'index.html'
     context_object_name = 'categories'
@@ -119,14 +118,13 @@ class InsuranceCategoriesPage(DataMixin, ListView):
         context['joke'] = joke['setup'] + ' ' + joke['punchline']
         context['activity'] = activity['activity']
         context['cat_selected'] = ''
-        c_def = self.get_user_context(title="Главная страница")
-        return dict(list(context.items()) + list(c_def.items()))
+        return dict(list(context.items()))
 
     def get_queryset(self):
         return get_queryset_of_categories(self.request)
 
 
-class InsuranceBranchesPage(DataMixin, ListView):
+class InsuranceBranchesPage(ListView):
     model = InsuranceBranch
     template_name = 'insurance_branches.html'
     context_object_name = 'branches'
@@ -140,7 +138,7 @@ class InsuranceBranchesPage(DataMixin, ListView):
         return InsuranceBranch.objects.all()
 
 
-class InsuranceAgentsPage(DataMixin, ListView):
+class InsuranceAgentsPage(ListView):
     model = InsuranceAgent
     template_name = 'insurance_agents.html'
     context_object_name = 'agents'
@@ -154,7 +152,7 @@ class InsuranceAgentsPage(DataMixin, ListView):
         return get_queryset_of_agents(self.request)
 
 
-class ObjectsOfInsurancePage(LoginRequiredMixin, DataMixin, ListView):
+class ObjectsOfInsurancePage(LoginRequiredMixin, ListView):
     login_url = 'login'
     model = ObjectOfInsurance
     template_name = 'insurance_objects.html'
@@ -169,7 +167,7 @@ class ObjectsOfInsurancePage(LoginRequiredMixin, DataMixin, ListView):
         return get_queryset_of_objects(self.request)
 
 
-class AddObject(LoginRequiredMixin, DataMixin, CreateView):
+class AddObject(LoginRequiredMixin, CreateView):
     login_url = 'login'
     form_class = AddObjectForm
     template_name = 'add_object.html'
@@ -188,7 +186,7 @@ class AddObject(LoginRequiredMixin, DataMixin, CreateView):
         return redirect('home')
 
 
-def edit_object(request):
+def update_object(request):
     id = request.GET.get('id')
     object = ObjectOfInsurance.objects.get(id=id)
     if object.user.id == request.user.id:
@@ -204,7 +202,7 @@ def edit_object(request):
         raise Exception(f"Cant edit ({object.user} - objects user id, {request.user.id} - current users id)")
 
 
-class MakeContractPage(LoginRequiredMixin, DataMixin, CreateView):
+class MakeContractPage(LoginRequiredMixin, CreateView):
     login_url = 'login'
     form_class = MakeContractForm
     template_name = 'make_contract.html'

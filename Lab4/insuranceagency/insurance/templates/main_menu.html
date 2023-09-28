@@ -1,0 +1,12 @@
+{% load static %}
+<a href='{% url 'home' %}'>
+    <img src="{% static 'images/logo.png' %}" alt="logo" width="60" height="48">
+    Агентство страхования
+</a>
+<ul>
+    {% for m in menu %}
+        <li>
+            <a href="{% url m.url_name %}">{{m.title}}</a>
+        </li>
+    {% endfor %}
+</ul>

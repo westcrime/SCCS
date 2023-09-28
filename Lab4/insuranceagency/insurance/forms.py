@@ -76,8 +76,8 @@ class RegisterUserForm(UserCreationForm):
 
 
 class LoginUserForm(UserCreationForm):
-    username = forms.CharField(label='Логин', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Логин' }))
-    password = forms.CharField(label='Пароль', max_length=100, widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'пароль'}))
+    username = forms.CharField(label='Логин', max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Логин' }))
+    password = forms.CharField(label='Пароль', max_length=100, widget=forms.PasswordInput(attrs={'placeholder': 'пароль'}))
 
 
 class MakeContractForm(ModelForm):
