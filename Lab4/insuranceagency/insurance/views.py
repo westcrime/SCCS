@@ -9,6 +9,7 @@ from .services.services import *
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
@@ -63,7 +64,7 @@ def register_user(request):
     })
 
 
-def activate_contract_link(request):
+def activate_contract(request):
     id = request.GET.get('id')
     activate_contract(id)
     messages.success(request, "Вы активировали страховку!")
@@ -90,81 +91,64 @@ def about(request):
     return render(request, 'about.html', context)
 
 
-class InsuranceContractsPage(LoginRequiredMixin, ListView):
-    login_url = 'login'
-    model = InsuranceContract
-    template_name = 'list_contracts.html'
-    context_object_name = 'contracts'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Ваши страховочные контракты")
-        context['cat_selected'] = 'my_insurance_contracts'
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def get_queryset(self):
-        return get_queryset_of_contracts(self.request)
+@login_required
+def contracts(request):
+    if not request.user.is_authenticated:
+        return redirect(reverse('login'))
+    context = {}
+    context['title'] = 'Страховки'
+    context['cat_selected'] = 'contracts'
+    context['contracts'] = get_queryset_of_contracts(request)
+    return render(request, 'contracts.html', context)
 
 
-class InsuranceCategoriesPage(ListView):
-    model = InsuranceCategory
-    template_name = 'index.html'
-    context_object_name = 'categories'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        joke = JokeService.get_random_joke()
-        activity = ActivityService.get_random_activity()
-        context['joke'] = joke['setup'] + ' ' + joke['punchline']
-        context['activity'] = activity['activity']
-        context['cat_selected'] = ''
-        return dict(list(context.items()))
-
-    def get_queryset(self):
-        return get_queryset_of_categories(self.request)
+def home(request):
+    context = {}
+    joke = JokeService.get_random_joke()
+    activity = ActivityService.get_random_activity()
+    context['joke'] = joke['setup'] + ' ' + joke['punchline']
+    context['activity'] = activity['activity']
+    context['cat_selected'] = 'home'
+    context['title'] = 'Главная страница'
+    context['categories'] = get_queryset_of_categories(request)
+    return render(request, 'categories.html', context)
 
 
-class InsuranceBranchesPage(ListView):
-    model = InsuranceBranch
-    template_name = 'insurance_branches.html'
-    context_object_name = 'branches'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Филиалы нашего агенства")
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def get_queryset(self):
-        return InsuranceBranch.objects.all()
+def categories(request):
+    context = {}
+    joke = JokeService.get_random_joke()
+    activity = ActivityService.get_random_activity()
+    context['joke'] = joke['setup'] + ' ' + joke['punchline']
+    context['activity'] = activity['activity']
+    context['cat_selected'] = 'categories'
+    context['title'] = 'categories'
+    context['categories'] = get_queryset_of_categories(request)
+    return render(request, 'categories.html', context)
 
 
-class InsuranceAgentsPage(ListView):
-    model = InsuranceAgent
-    template_name = 'insurance_agents.html'
-    context_object_name = 'agents'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Агенты нашей компании")
-        return dict(list(context.items()) + list(c_def.items()))
-
-    def get_queryset(self):
-        return get_queryset_of_agents(self.request)
+def branches(request):
+    context = {}
+    context['cat_selected'] = 'branches'
+    context['title'] = 'Филиалы'
+    context['branches'] = InsuranceBranch.objects.all()
+    return render(request, 'branches.html', context)
 
 
-class ObjectsOfInsurancePage(LoginRequiredMixin, ListView):
-    login_url = 'login'
-    model = ObjectOfInsurance
-    template_name = 'insurance_objects.html'
-    context_object_name = 'objects'
+def agents(request):
+    context = {}
+    context['cat_selected'] = 'agents'
+    context['title'] = 'Агенты'
+    context['agents'] = get_queryset_of_agents(request)
+    return render(request, 'agents.html', context)
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Ваши зарегистрированные объекты")
-        return dict(list(context.items()) + list(c_def.items()))
 
-    def get_queryset(self):
-        return get_queryset_of_objects(self.request)
+@login_required
+def objects(request):
+    context = {}
+    context['cat_selected'] = 'objects'
+    context['title'] = 'Объекты'
+    context['objects'] = get_queryset_of_objects(request)
+    return render(request, 'objects.html', context)
 
 
 class AddObject(LoginRequiredMixin, CreateView):
@@ -175,8 +159,7 @@ class AddObject(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Добавление нового объекта")
-        return dict(list(context.items()) + list(c_def.items()))
+        return dict(list(context.items()))
 
     def form_valid(self, form):
         object = form.save(commit=False)
@@ -186,7 +169,8 @@ class AddObject(LoginRequiredMixin, CreateView):
         return redirect('home')
 
 
-def update_object(request):
+@login_required
+def edit_object(request):
     id = request.GET.get('id')
     object = ObjectOfInsurance.objects.get(id=id)
     if object.user.id == request.user.id:
@@ -210,10 +194,14 @@ class MakeContractPage(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Оформление страховки")
-        return dict(list(context.items()) + list(c_def.items()))
+        return dict(list(context.items()))
 
     def form_valid(self, form):
-        make_contract(self.request, form)
-        messages.success(self.request, "Вы оформили страховку, можете узнать ее цену и активировать в МОИХ ДОГОВОРАХ")
-        return redirect('home')
+        context = {}
+        context['agent'] = form.cleaned_data['ins_agent']
+        context['time_end'] = form.cleaned_data['time_end']
+        context['obj'] = form.cleaned_data['ins_object']
+        context['client'] = request.user
+        context['time_create'] = datetime.datetime.now().replace(tzinfo=pytz.utc)
+        context['total_cost'] = make_contract(context['time_create'], time_end, obj)
+        return render(self.request, 'activate_contract', context)

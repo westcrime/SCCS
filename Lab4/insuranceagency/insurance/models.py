@@ -115,7 +115,7 @@ class InsuranceContract(models.Model):
     total_cost = models.FloatField(null=True, blank=True, help_text='Общая цена услуги', verbose_name='Общая цена услуги')
 
     def get_absolute_url(self):
-        return reverse('insurance_contract', kwargs={'ins_contract_id': self.pk})
+        return reverse('contract', kwargs={'contract_id': self.pk})
 
     class Meta:
         verbose_name = 'Страховые договоры'

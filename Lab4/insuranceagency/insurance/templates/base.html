@@ -25,7 +25,7 @@
 			<span> {{ user }} </span>
 		</li>
 		<li>
-			<a class="nav-link" href="{% url 'logout' %}"> Выйти из профиля </a>
+			<a href="{% url 'logout' %}"> Выйти из профиля </a>
 		</li>
 	</ul>
 	{% endif %}
@@ -34,15 +34,11 @@
 
 	{% show_second_menu cat_selected=request.path %}
 
-    <div class="container">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-primary" role="alert">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    </div>
+  {% if messages %}
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  {% endif %}
 
 	{% block content %}
 	{% endblock %}

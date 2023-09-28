@@ -66,23 +66,11 @@ def get_queryset_of_objects(request):
     return ObjectOfInsurance.objects.filter(user_id=request.user.id)
 
 
-def make_contract(request, form):
+def make_contract(time_create, time_end, obj):
     """Оформление контракта, заполнение ее полей"""
-    # logging.basicConfig(filename='logging.log', encoding='utf-8', level=logging.DEBUG)
-    # logging.debug(form.cleaned_data)
-    time_end = form.cleaned_data['time_end']
-    contract = form.save(commit=False)
-    contract.time_create = datetime.datetime.now().replace(tzinfo=pytz.utc)
-    contract.user = request.user
-    obj = form.cleaned_data['ins_object']
     object_cost = obj.cost_with_all_coefs()
-    # object_cost_with_cat = object_cost_with_risk * obj.ins_cat.ins_coef
-    # logging.debug(f"клин дата - {form.cleaned_data}")
-    # logging.debug(contract.time_create)
-    # logging.debug(time_end)
     if (time_end - contract.time_create).days:
-        contract.total_cost = object_cost * (time_end - contract.time_create).days
+        total_cost = object_cost * (time_end - time_create).days
     else:
-        contract.total_cost = object_cost
-    contract.ins_client = request.user
-    contract = form.save()
+        total_cost = object_cost
+    return total_cost

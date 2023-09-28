@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for msg in messages %}
+	<strong>Внимание!</strong>
 	{{ msg }}
 {% endfor %}
 <h1>Ваши страховки</h1>
-<p><a href="/my_insurance_contracts?sort=time_create">Сортировать по времени создания</a></p>
-<p><a href="/my_insurance_contracts?sort=time_end">Сортировать по времения окончания страховки</a></p>
-<p><a href="/my_insurance_contracts?sort=total_cost">Сортировать по общей стоимости страховки</a></p>
+<p><a href="/contracts?sort=time_create">Сортировать по времени создания</a></p>
+<p><a href="/contracts?sort=time_end">Сортировать по времения окончания страховки</a></p>
+<p><a href="/contracts?sort=total_cost">Сортировать по общей стоимости страховки</a></p>
 <ul>
 	{% for p in contracts %}
 		<li>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <h1>Возможные виды страхований</h1>
+
+    {% block ad %}
+        <a href="https://1xbet.by/">
+            <img src="{% static 'images/adv.png' %}" alt="Реклама">
+            <p>Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
+        </a>
+    {% endblock %}
+
+    <a href="?sort=name">Сортировать по имени</a>
+    <a href="?sort=ins_coef">Сортировать по стоимости страховки</a>
+            
+    <p>Шутка: {{ joke }}</p>
+    <p>Рандомное занятие: {{ activity }}</p>
+    <ul>
+        {% for p in categories %}
+            <li>
+                <img src="{{ p.photo.url }}" alt="Card image cap">
+                <h5>{{ p.name }}</h5>
+                <p>{{ p.content }}</p>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+</div>
