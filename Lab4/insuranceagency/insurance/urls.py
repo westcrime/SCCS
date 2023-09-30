@@ -2,14 +2,14 @@ from django.urls import path, re_path
 from .views import *
 
 urlpatterns = [
+                path('', categories, name='home'),
                 path('home', categories, name='home'),
                 path('categories', categories, name='categories'),
                 path('register/', register_user, name='register'),
                 path('login/', login_user, name='login'),
                 path('logout/', logout_user, name='logout'),
-                path('activate_contract/', activate_contract_link, name='activate_contract'),
-                path('delete_object/', delete_object_link, name='delete_object'),
-                path('edit_object/', edit_object, name='edit_object'),
+                path('delete_object/', delete_object, name='delete_object'),
+                path('update_object/', update_object, name='update_object'),
                 path('add_object/', AddObject.as_view(), name='add_object'),
                 path('about/', about, name='about'),
                 path('branches/', branches, name='branches'),

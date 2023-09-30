@@ -4,13 +4,13 @@ register = template.Library()
 
 
 @register.inclusion_tag('main_menu.html')
-def show_menu(menu=None):
+def show_menu(menu=None, user=None):
     menu = [{'title': "На главную", 'url_name': 'home'},
             {'title': "Заключить договор", 'url_name': 'make_contract'},
             {'title': "О сайте", 'url_name': 'about'}
             ]
 
-    return {"menu": menu}
+    return {"menu": menu, "user": user}
 
 
 @register.inclusion_tag('second_menu.html')

@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for msg in messages %}
-	<strong>Внимание!</strong>
-	{{ msg }}
-{% endfor %}
 <h1>Ваши страховки</h1>
 <p><a href="/contracts?sort=time_create">Сортировать по времени создания</a></p>
 <p><a href="/contracts?sort=time_end">Сортировать по времения окончания страховки</a></p>
@@ -12,12 +8,6 @@
 	{% for p in contracts %}
 		<li>
 			<p>Объект страхования: {{p.ins_object.name}}</p>
-			{% if p.is_activated  %}
-				<p>Страховка активна</p>
-			{% else %}
-				<p>Страховка НЕ активна</p>
-				<a href="/activate_contract?id={{ p.id }}" role="button">Активировать</a>
-			{% endif %}
 			<p>Время создания: {{p.time_create}}</p>
 			<p>Время окончания: {{p.time_end}}</p>
 			<p>Агент заключивший  страховку: {{p.ins_agent.first_name}} {{p.ins_agent.last_name}} {{p.ins_agent.surname}}</p>

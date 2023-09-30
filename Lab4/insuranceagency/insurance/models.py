@@ -106,7 +106,6 @@ class InsuranceBranch(models.Model):  # Филиал страхования
 
 
 class InsuranceContract(models.Model):
-    is_activated = models.BooleanField(blank=True, default=False, verbose_name="Активирована ли страховка")
     ins_object = models.ForeignKey('ObjectOfInsurance', on_delete=models.CASCADE, verbose_name="Объект страхования")
     time_create = models.DateTimeField(null=True, blank=True, verbose_name="Дата и время заключения")
     time_end = models.DateTimeField(null=True, blank=True, verbose_name="Дата и время окончания договора")

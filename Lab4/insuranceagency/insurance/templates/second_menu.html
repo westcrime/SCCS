@@ -1,13 +1,15 @@
-<ul>
-    {% for c in second_menu %}
-        {% if cat_selected == c.url_name %}
-        <li>
-            <p>{{c.title}}</p>
-        </li>
-        {% else %}
-        <li>
-            <a href="{% url c.url_name %}">{{c.title}}</a>
-        </li>
-        {% endif %}
-    {% endfor %}
-</ul>
+<div class="sidebar"> 
+    <ul>
+        {% for c in second_menu %}
+            {% if cat_selected == c.url_name %}
+            <li>
+                <p>{{c.title}}</p>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url c.url_name %}">{{c.title}}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>    
+</div>

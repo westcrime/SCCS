@@ -3,45 +3,29 @@
 {% load insurance_tags %}
 <html lang="ru">
 <head>
-	<title>{{title}}</title>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
 	<!-- Панель навигации -->
 	<!-- Панель ссылок -->
-	{% show_menu %}
-
-	<!-- Информация пользователя -->
-	{% if not user.is_authenticated %}
-	<ul>
-		<li><a href="{% url 'register' %}"> Регистрация </a></li>
-		<li><a href="{% url 'login' %}"> Войти </a></li>
-	</ul>
-	{% else %}
-	<ul>
-		<li>
-			<span> {{ user }} </span>
-		</li>
-		<li>
-			<a href="{% url 'logout' %}"> Выйти из профиля </a>
-		</li>
-	</ul>
-	{% endif %}
-	<!-- Информация пользователя - конец -->
-
+	{% show_menu user=user %}
 
 	{% show_second_menu cat_selected=request.path %}
 
-  {% if messages %}
-    {% for message in messages %}
-      {{ message }}
-    {% endfor %}
-  {% endif %}
+<div class="main">
+		  {% if messages %}
+		    {% for message in messages %}
+		      {{ message }}
+		    {% endfor %}
+		  {% endif %}
 
 	{% block content %}
 	{% endblock %}
+</div>
 
 <!-- Footer -->
 <!-- Конец footer'а и страницы -->

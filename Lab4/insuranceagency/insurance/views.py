@@ -27,11 +27,11 @@ def login_user(request):
         password = request.POST['password']
         user = auth.authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user:
             auth.login(request, user)
             return redirect('home')
         else:
-            messages.success(request, ('Пароль или/и имя пользователя не верны, попробуйте еще раз...'))
+            messages.error(request, ('Пароль или/и имя пользователя не верны, попробуйте еще раз...'))
             return redirect('login')
 
     # if a GET (or any other method) we'll create a blank form
@@ -62,24 +62,6 @@ def register_user(request):
     return render(request, 'authentication/register.html', {
         'form': form,
     })
-
-
-def activate_contract(request):
-    id = request.GET.get('id')
-    activate_contract(id)
-    messages.success(request, "Вы активировали страховку!")
-    return redirect('home')
-
-
-def delete_object_link(request):
-    id = request.GET.get('id')
-    try:
-        name = delete_object_of_insurance(id, request)
-    except:
-        messages.warning(request, f"Возникли ошибки при удалении: {name}!")
-        return redirect('insurance_objects')
-    messages.success(request, f"Вы успешно удалили объект: {name}!")
-    return redirect('insurance_objects')
 
 
 def about(request):
@@ -121,7 +103,7 @@ def categories(request):
     context['joke'] = joke['setup'] + ' ' + joke['punchline']
     context['activity'] = activity['activity']
     context['cat_selected'] = 'categories'
-    context['title'] = 'categories'
+    context['title'] = 'Категории страхования'
     context['categories'] = get_queryset_of_categories(request)
     return render(request, 'categories.html', context)
 
@@ -170,7 +152,7 @@ class AddObject(LoginRequiredMixin, CreateView):
 
 
 @login_required
-def edit_object(request):
+def update_object(request):
     id = request.GET.get('id')
     object = ObjectOfInsurance.objects.get(id=id)
     if object.user.id == request.user.id:
@@ -178,12 +160,26 @@ def edit_object(request):
             form = EditObjectForm(request.POST, instance=object)
             if form.is_valid():
                 form.save()
-                return redirect('insurance_objects')
+                return redirect('objects')
         else:
             form = EditObjectForm(instance=object, )
-            return render(request, 'edit_object.html', {'form': form})
+            return render(request, 'update_object.html', {'form': form})
     else:
         raise Exception(f"Cant edit ({object.user} - objects user id, {request.user.id} - current users id)")
+
+
+@login_required
+def delete_object(request):
+    id = request.GET.get('id')
+    try:
+        object = ObjectOfInsurance.objects.get(id=id)
+        if object.user.id == request.user.id:
+            name = delete_object_of_insurance(id, request)
+    except:
+        messages.warning(request, f"Возникли ошибки при удалении: {name}!")
+        return redirect('insurance_objects')
+    messages.success(request, f"Вы успешно удалили объект: {name}!")
+    return redirect('objects')
 
 
 class MakeContractPage(LoginRequiredMixin, CreateView):
@@ -197,11 +193,9 @@ class MakeContractPage(LoginRequiredMixin, CreateView):
         return dict(list(context.items()))
 
     def form_valid(self, form):
-        context = {}
-        context['agent'] = form.cleaned_data['ins_agent']
-        context['time_end'] = form.cleaned_data['time_end']
-        context['obj'] = form.cleaned_data['ins_object']
-        context['client'] = request.user
-        context['time_create'] = datetime.datetime.now().replace(tzinfo=pytz.utc)
-        context['total_cost'] = make_contract(context['time_create'], time_end, obj)
-        return render(self.request, 'activate_contract', context)
+        form.instance.time_create = datetime.datetime.now().replace(tzinfo=pytz.utc)
+        form.instance.ins_client = self.request.user
+        form.instance.total_cost = make_contract(form.instance.time_create, form.instance.time_end, form.instance.ins_object)
+        form.save()
+        messages.success(self.request, f"Вы успешно застраховали объект {(form.cleaned_data['ins_object']).name}")
+        return redirect('contracts')

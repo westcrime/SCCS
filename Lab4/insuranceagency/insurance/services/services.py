@@ -30,8 +30,8 @@ def delete_object_of_insurance(id: int, request):
 
 def get_queryset_of_contracts(request):
     """Получение списка контрактов, отсортированного по выбранному пользователем признаку"""
+     # Удаление контрактов, срок которых истек
     InsuranceContract.objects.filter(time_end__lte=datetime.datetime.now()).delete()
-    # Удаление контрактов, срок которых истек
     sort_factor = request.GET.get('sort')
     available_sort_factors = ['time_create', 'time_end', 'total_cost']
     if sort_factor in available_sort_factors:
@@ -69,7 +69,7 @@ def get_queryset_of_objects(request):
 def make_contract(time_create, time_end, obj):
     """Оформление контракта, заполнение ее полей"""
     object_cost = obj.cost_with_all_coefs()
-    if (time_end - contract.time_create).days:
+    if (time_end - time_create).days:
         total_cost = object_cost * (time_end - time_create).days
     else:
         total_cost = object_cost

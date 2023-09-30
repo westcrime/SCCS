@@ -14,7 +14,7 @@ from .models import *
 class EditObjectForm(ModelForm):
     class Meta:
         model = ObjectOfInsurance
-        fields = ['name']
+        fields = ['name', 'photo']
 
     def clean_name(self):
         name = self.cleaned_data['name']
