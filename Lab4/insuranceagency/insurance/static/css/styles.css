@@ -9,7 +9,7 @@
 
 :root {
     --primary-color: #FBE8A6;
-    --secondary-color: #FBE8A6;
+    --secondary-color: #B4DFE5;
     --background-color: #FBE8A6;
     --text-color: black;
 }
@@ -90,13 +90,12 @@ h1, h2, h3, h4, h5, p, a {
 .sidebar ul {
     list-style-type: none; /* Убираем маркеры списка */
     padding: 0;
-    margin: 0;
+    margin: auto;
 }
 
 /* Стили для элементов списка в сайдбаре */
 .sidebar li {
-    margin-top: 30px; 
-    margin-bottom: 30px; /* Отступ между элементами списка */
+    margin: 30px;
 }
 
 /* Стили для ссылок в сайдбаре */
@@ -109,4 +108,41 @@ h1, h2, h3, h4, h5, p, a {
 .main {
     margin-left: 300px;
     padding: 10px;
+}
+
+.card ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    justify-content: start; /* Горизонтальное выравнивание по центру */
+    align-items: center; /* Вертикальное выравнивание по центру */
+}
+
+.card li {
+    background-color: var(--secondary-color);
+    width: 700px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card li img {
+    padding: 10px;
+    height: 400px;
+    width: 690px;
+}
+
+.ad {
+    background-color: var(--secondary-color);
+    height: 300px;
+    padding: 10px;
+    width: 310px;
+    border-radius: 10px;
+    right: 0;
+    top: 100px;
+    position: fixed;
+}
+
+.ad a img {
+    padding: 10px;
+    height: 200px;
+    width: 290px;
 }

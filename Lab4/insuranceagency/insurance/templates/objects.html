@@ -5,20 +5,21 @@
 
 <p><a href="/objects?sort=name">Сортировать по имени</a></p>
 <p><a href="/objects?sort=cost">Сортировать по стоимости</a></p>
-
-<ul>
-	{% for o in objects %}
-		<li>
-			<br>
-			<img class="card-img-top" src="{{ o.photo.url }}" alt="Card image cap">
-			<p class="card-title">{{ o.name }}</p>
-			<p class="card-text">Цена объекта: {{o.cost}} $</p>
-			<p class="card-text">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
-			<p class="card-text">Категория страховки: {{o.ins_cat.name}}</p>
-			<a class="btn btn-primary" href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a>
-			<a class="btn btn-primary" href="/update_object?id={{ o.id }}">Изменить данные (Некоторые)</a>
-			<br>
-		</li>
-	{% endfor %}
-</ul>
+<div class="card">
+	<ul>
+		{% for o in objects %}
+			<li>
+				<br>
+				<img class="card-img-top" src="{{ o.photo.url }}" alt="Card image cap">
+				<p class="card-title">{{ o.name }}</p>
+				<p class="card-text">Цена объекта: {{o.cost}} $</p>
+				<p class="card-text">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
+				<p class="card-text">Категория страховки: {{o.ins_cat.name}}</p>
+				<a class="btn btn-primary" href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a>
+				<a class="btn btn-primary" href="/update_object?id={{ o.id }}">Изменить данные (Некоторые)</a>
+				<br>
+			</li>
+		{% endfor %}
+	</ul>
+</div>
 {% endblock %}

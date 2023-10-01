@@ -4,10 +4,12 @@
     <h1>Возможные виды страхований</h1>
 
     {% block ad %}
+    <div class="ad">
         <a href="https://1xbet.by/">
             <img src="{% static 'images/adv.png' %}" alt="Реклама">
             <p>Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
         </a>
+    </div>
     {% endblock %}
 
     <a href="?sort=name">Сортировать по имени</a>
@@ -15,16 +17,18 @@
             
     <p>Шутка: {{ joke }}</p>
     <p>Рандомное занятие: {{ activity }}</p>
-    <ul>
-        {% for p in categories %}
-            <li>
-                <img src="{{ p.photo.url }}" alt="Card image cap">
-                <h5>{{ p.name }}</h5>
-                <p>{{ p.content }}</p>
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
+    <div class="card">
+        <ul>
+            {% for p in categories %}
+                <li>
+                    <img src="{{ p.photo.url }}" alt="Card image cap">
+                    <h2>{{ p.name }}</h2>
+                    <p>{{ p.content }}</p>
+                </li>
+                <br>
+            {% endfor %}
+        </ul>        
+    </div>
 {% endblock %}
 
 </div>

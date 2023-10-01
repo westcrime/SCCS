@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Филиалы нашего агенства</h1>
-<ul>
-	{% for b in branches %}
-		<p>Филиал: {{b.name}}</p>
-		<p>Адрес: {{ b.address }}</p>
-		<p>Номер телефона: {{ b.phone_number }}</p>
-	{% endfor %}
-</ul>
+<div class="card">
+	<ul>
+		{% for b in branches %}
+			<p>Филиал: {{b.name}}</p>
+			<p>Адрес: {{ b.address }}</p>
+			<p>Номер телефона: {{ b.phone_number }}</p>
+		{% endfor %}
+	</ul>
+</div>
 {% endblock %}
