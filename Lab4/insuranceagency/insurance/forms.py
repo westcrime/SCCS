@@ -55,14 +55,14 @@ class AddObjectForm(ModelForm):
 
 
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label='Логин', widget=forms.TextInput())
     phone_regex = RegexValidator(regex=r'^\+37529\d{7}$',
                                  message="Телефонный номер должен быть введен в формате: '+37529xxxxxxx'. Разрешено "
                                          "до 15 цифр")
     phone_number = forms.CharField(label='Номер телефона', validators=[phone_regex], max_length=17,
-                                   widget=forms.TextInput(attrs={'class': 'form-input'}))  # Validators should be a list
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+                                   widget=forms.TextInput())  # Validators should be a list
+    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput())
+    password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput())
     is_adult = forms.BooleanField(label='Я подтверждаю, что мне больше 18')
 
     class Meta:

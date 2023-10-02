@@ -12,23 +12,47 @@
     --secondary-color: #B4DFE5;
     --background-color: #FBE8A6;
     --text-color: black;
+    --third-color: #55c4d4;
+    --dark-blue: #3875d7;
 }
 
 body {
-    font-family: 'Roboto-Regular', sans-serif;
-    background-color: var(--background-color);
+    font-family: 'Roboto-Regular', 'Open-Sans', sans-serif;
+    background: radial-gradient(circle at top left, var(--background-color), var(--secondary-color));
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, p, a {
+h1, h2, h3, h4, h5, a {
     text-decoration: none; /* Убираем подчеркивание текста ссылок */
     color: var(--text-color); /* Цвет текста ссылок */
 }
 
+a {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+a:hover {
+    transform: scale(1.1); /* Увеличение размера при наведении на ссылку */
+}
+
+a:link {
+    color: var(--text-color); /* Цвет текста ссылки */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+/* Стили для посещенных ссылок */
+a:visited {
+    color: #800080; /* Цвет текста для посещенных ссылок (пурпурный) */
+}
+
+a:focus {
+    outline: 2px solid var(--primary-color); /* Цвет обводки при фокусе */
+}
+
 /* Основные стили навигационной панели */
 .navbar {
-    background-color: var(--primary-color); /* Цвет фона */
     position: sticky;
     top: 0;
     left: 0;
@@ -57,18 +81,16 @@ h1, h2, h3, h4, h5, p, a {
 
 /* Стили для ссылок */
 .navbar a {
-    text-decoration: none; /* Убираем подчеркивание текста ссылок */
     font-size: 18px;
     font-weight: bold; /* Жирное начертание */
 }
 
 /* Стили для активной ссылки */
 .navbar a.active {
-    color: #f00; /* Цвет активной ссылки */
+    color: blueviolet; /* Цвет активной ссылки */
 }
 
 .sidebar {
-    background-color: var(--primary-color);
     color: var(--text-color); /* Цвет текста в сайдбаре */
     position: fixed;
     top: 70px;
@@ -100,9 +122,12 @@ h1, h2, h3, h4, h5, p, a {
 
 /* Стили для ссылок в сайдбаре */
 .sidebar a {
-    text-decoration: none; /* Убираем подчеркивание текста ссылок */
     color: var(--text-color); /* Цвет текста ссылок */
     font-weight: bold; /* Жирное начертание текста ссылок */
+}
+
+[class*="bar"] {
+    background-color: rgba(255, 0, 0, 0);
 }
 
 .main {
@@ -114,6 +139,11 @@ h1, h2, h3, h4, h5, p, a {
     list-style-type: none; /* Убираем маркеры списка */
     justify-content: start; /* Горизонтальное выравнивание по центру */
     align-items: center; /* Вертикальное выравнивание по центру */
+}
+
+/* Стили для четных элементов списка */
+.card ul li:nth-child(even) {
+    background-color: #55c4d4;
 }
 
 .card li {
@@ -145,4 +175,128 @@ h1, h2, h3, h4, h5, p, a {
     padding: 10px;
     height: 200px;
     width: 290px;
+}
+
+table {
+    background-color: var(--primary-color);
+    border: 5px solid darkgray;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: var(--secondary-color);
+}
+
+tr:last-child {
+    background-color: var(--third-color);
+}
+
+/* Стили для доступных элементов формы */
+input:enabled,
+select:enabled,
+textarea:enabled {
+    border: 2px solid var(--third-color);
+}
+
+/* Стили для обязательных элементов формы */
+input:required,
+select:required,
+textarea:required {
+    border: 2px solid var(--secondary-color);
+}
+
+input:active,
+select:active,
+textarea:active {
+    border: 2px solid var(--secondary-color);
+}
+
+/* Стили для заблокированных элементов формы */
+input:disabled,
+select:disabled,
+textarea:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Стили для элементов с значениями вне диапазона */
+input[type="number"]:out-of-range {
+    background-color: #FF5733;
+    color: var(--text-color);
+}
+
+/* Стили для включенных флажков и переключателей */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+q::before {
+    content: "“"; /* Левая кавычка для английского языка */
+}
+
+q::after {
+    content: "”"; /* Правая кавычка для английского языка */
+}
+
+q[lang="ru"]::before {
+    content: "«"; /* Левая кавычка для русского языка */
+}
+
+q[lang="ru"]::after {
+    content: "»"; /* Правая кавычка для русского языка */
+}
+
+p.article:first-letter {
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+dd:before {
+    content: "%";
+}
+
+::selection {
+    background-color: var(--secondary-color); /* Цвет фона для выделенного текста */
+    color: var(--text-color); /* Цвет текста для выделенного текста */
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 50px;
+    }
+    .sidebar li {
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 30px; /* Минимальная ширина */
+        max-height: 30px; /* Минимальная высота */
+    }
+    .main {
+        margin-left: 60px;
+    }
+    .ad {
+        visibility: hidden;
+    }
+}
+
+button:hover {
+    cursor: pointer; /* Изменяем вид курсора на указатель при наведении на кнопку */
+}
+
+p {
+    margin: 5px; /* Отступы */
+    padding: 5px; /* Поля */
+    text-transform: uppercase; /* Преобразование текста в верхний регистр */
+    text-indent: 2em; /* Красная строка */
+    line-height: 1.5; /* Межстрочный интервал */
+    font-variant: small-caps; /* Замена нижнего регистра на капитель */
+    letter-spacing: 1px; /* Интервал между символами */
+    word-spacing: 3px; /* Интервал между словами */
+    font-family: 'Roboto-Regular', sans-serif; /* Шрифт */
+    text-align: left; /* Выравнивание текста*/
+    position: static; /* Позиционирование блока */
+    border: 0; /* Граница */
+    font-size: 12px;
+    font-weight: bold;
 }

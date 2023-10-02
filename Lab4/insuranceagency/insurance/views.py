@@ -65,10 +65,12 @@ def register_user(request):
 
 
 def about(request):
-    context = {'active_contracts': InsuranceContract.objects.filter(is_activated=True).count()}
+    context = {'active_contracts': InsuranceContract.objects.count()}
     for i in range(0, 3):
         joke = JokeService.get_random_joke()
         context[f'joke{i + 1}'] = joke['setup'] + '-' + joke['punchline']
+        context['title'] = 'О сайте'
+        context['cat_selected'] = 'about'
         context[f'activity{i + 1}'] = ActivityService.get_random_activity()['activity']
     return render(request, 'about.html', context)
 

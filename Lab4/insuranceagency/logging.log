@@ -1301,3 +1301,4 @@ DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /ran
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
 DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 162
 INFO:django.utils.autoreload:/home/westcrime/SCCS/Lab4/insuranceagency/insurance/views.py changed, reloading.
+DEBUG:root:цена - -243
