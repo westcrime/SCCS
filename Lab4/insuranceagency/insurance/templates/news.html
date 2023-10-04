@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <ul>
+            {% for n in news %}
+                <li>
+                    <h2>{{ n.title }}</h2>
+                    <p class="sentence-container">
+                        {{ n.description }}
+                    </p>
+                    <a href="{% url 'news_details' n.id %}">Подробнее о новости</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

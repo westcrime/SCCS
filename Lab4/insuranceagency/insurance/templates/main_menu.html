@@ -1,7 +1,8 @@
 {% load static %}
 <div class="navbar">
     <ul>
-        <li><img src='{% static "images/logo.png" %}' alt="logo" width="60" height="48"></li>
+        <li><img class="animated-logo" src='{% static "images/logo.png" %}' alt="logo" width="60" height="48" style="margin-right: 10px; margin-left: 20px"></li>
+        <li><p class="company-name">СКДТ</p></li>
         {% for m in menu %}
             <li>
                 <a href="{% url m.url_name %}">{{m.title}}</a>

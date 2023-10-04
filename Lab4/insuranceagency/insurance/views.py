@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 
 from .api.activity import ActivityService
 from .api.joke import JokeService
+from .services import news_service
 from .services.services import *
 from django.contrib import messages
 from django.contrib import auth
@@ -201,3 +202,20 @@ class MakeContractPage(LoginRequiredMixin, CreateView):
         form.save()
         messages.success(self.request, f"Вы успешно застраховали объект {(form.cleaned_data['ins_object']).name}")
         return redirect('contracts')
+
+
+def news(request):
+    context = {}
+    context['cat_selected'] = 'news'
+    context['title'] = 'Новости'
+    context['news'] = news_service.get_news()
+    return render(request, 'news.html', context)
+
+
+def news_details(request, news_id):
+    context = {}
+    context['cat_selected'] = 'news_details'
+    selected_news = news_service.get_news().index(news_id)
+    context['title'] = f'{selected_news.title}'
+    context['news'] = selected_news
+    return render(request, 'news_details.html', context)

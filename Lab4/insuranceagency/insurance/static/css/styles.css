@@ -1,7 +1,7 @@
 /* Пример CSS-правил для использования скачанного шрифта */
 @font-face {
     font-family: 'Roboto-Regular';
-    src: url('% static "fonts/Roboto-Regular.ttf" %}') format('ttf');
+    src: url('../fonts/Roboto-Regular.ttf') format('ttf');
     /* Дополнительные форматы шрифта, если необходимо */
     font-weight: normal;
     font-style: normal;
@@ -131,11 +131,16 @@ a:focus {
 }
 
 .main {
+    margin-right: 220px;
     margin-left: 300px;
     padding: 10px;
 }
 
 .card ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0;
     list-style-type: none; /* Убираем маркеры списка */
     justify-content: start; /* Горизонтальное выравнивание по центру */
     align-items: center; /* Вертикальное выравнивание по центру */
@@ -147,8 +152,9 @@ a:focus {
 }
 
 .card li {
+    overflow: hidden;
     background-color: var(--secondary-color);
-    width: 700px;
+    width: 350px;
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -156,8 +162,12 @@ a:focus {
 
 .card li img {
     padding: 10px;
-    height: 400px;
-    width: 690px;
+    height: 200px;
+    width: 340px;
+}
+
+.card h1, h2, h3, h4 {
+    text-align: center;
 }
 
 .ad {
@@ -259,7 +269,7 @@ dd:before {
 
 ::selection {
     background-color: var(--secondary-color); /* Цвет фона для выделенного текста */
-    color: var(--text-color); /* Цвет текста для выделенного текста */
+    color: blue; /* Цвет текста для выделенного текста */
 }
 
 @media (max-width: 900px) {
@@ -274,6 +284,7 @@ dd:before {
     }
     .main {
         margin-left: 60px;
+        margin-right: 200px;
     }
     .ad {
         visibility: hidden;
@@ -299,4 +310,141 @@ p {
     border: 0; /* Граница */
     font-size: 12px;
     font-weight: bold;
+}
+
+/* Стили для списка компаний-партнеров */
+.partner-list {
+    display: flex; /* Располагаем элементы горизонтально */
+    justify-content: center; /* Равномерно распределяем пространство между элементами */
+    align-items: center; /* Выравниваем элементы по центру по вертикали */
+}
+
+/* Стили для каждой компании-партнера */
+.partner {
+    padding: 10px;
+    width: 40px; /* Настройка ширины блока */
+    height: 40px; /* Настройка высоты блока (можно изменить по вашим предпочтениям) */
+    background-color: var(--secondary-color); /* Настройка цвета фона */
+    border-radius: 50%; /* Создаем круглую форму блока */
+    text-align: center; /* Выравниваем текст по центру */
+    color: var(--text-color); /* Цвет текста */
+    font-weight: bold; /* Жирный шрифт для текста */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+    margin: 10px; /* Задаем отступ между блоками */
+}
+
+/* Стили для текста внутри блока */
+.partner img {
+    max-width: 100%; /* Максимальная ширина изображения равна ширине блока */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    margin-bottom: 10px; /* Отступ снизу от изображения */
+}
+
+.company-name {
+    margin-left: 0;
+    margin-right: 30px;
+    font-size: 24px; /* Размер шрифта */
+    font-weight: bold; /* Толщина шрифта (например, bold для жирного) */
+    letter-spacing: 2px; /* Кернинг (расстояние между буквами) */
+    color: var(--text-color); /* Цвет текста */
+    text-transform: uppercase; /* Преобразование текста в верхний регистр */
+}
+
+.animated-text {
+    font-size: 12px;
+    animation: sizingText 4s cubic-bezier(0.5, 0.5, 0.4, 1.2) infinite; /* Имя анимации, длительность, функция времени и повторение */
+    transform-origin: center; /* Ось вращения - центр */
+}
+
+@keyframes sizingText {
+    0% {
+        transform: scale(1); /* Начальное положение - 0 градусов */
+    }
+    50% {
+        transform:scale(1.3); /* Конечное положение - 360 градусов (полный оборот) */
+    }
+    100% {
+        transform:scale(1);
+    }
+}
+
+.animated-logo {
+    animation: rotateLogo 2s ease infinite; /* Имя анимации, длительность, функция времени и повторение */
+    transform-origin: center; /* Ось вращения - центр */
+}
+
+@keyframes rotateLogo {
+    0% {
+        transform: rotate(0deg) scale(1); /* Начальное положение - 0 градусов */
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.sentence-container {
+    text-overflow: ellipsis;/* Обрезать лишний текст */
+    white-space: nowrap;
+    height: 18px;
+    width: 340px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin: 0 5px 0 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.sentence-container::after {
+    content: "...";
+}
+
+.certificate {
+    width: 500px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.background-image {
+    width: 440px;
+    height: 540px;
+    background-image: url('../images/certificate_background.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    z-index: 2;
+}
+
+.border {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/certificate_border.png');
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.text {
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color); /* Цвет текста */
+    font-family: 'Pacifico', cursive;
+    font-size: 24px; /* Размер шрифта */
+}
+
+.requisites a {
+    font-family: 'Roboto-Regular', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
 }

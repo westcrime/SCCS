@@ -7,7 +7,7 @@
     <div class="ad">
         <a href="https://1xbet.by/">
             <img src="{% static 'images/adv.png' %}" alt="Реклама">
-            <p>Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
+            <p class="animated-text">Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
         </a>
     </div>
     {% endblock %}
@@ -25,10 +25,7 @@
                     <h2>{{ p.name }}</h2>
                     <p>{{ p.content }}</p>
                 </li>
-                <br>
             {% endfor %}
-        </ul>        
+        </ul>
     </div>
 {% endblock %}
-
-</div>

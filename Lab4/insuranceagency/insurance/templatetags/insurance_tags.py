@@ -19,7 +19,8 @@ def show_second_menu(menu=None, cat_selected="insurance_branches"):
             {'title': "Список объектов", 'url_name': 'objects'},
             {'title': "Список договоров", 'url_name': 'contracts'},
             {'title': "Список агентов", 'url_name': 'agents'},
-            {'title': "Виды страхования", 'url_name': 'categories'}
+            {'title': "Виды страхования", 'url_name': 'categories'},
+            {'title': "Новости", 'url_name': 'news'}
             ]
 
     return {"second_menu": menu, "cat_selected": cat_selected}
