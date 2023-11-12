@@ -88,15 +88,8 @@ def contracts(request):
 
 
 def home(request):
-    context = {}
-    joke = JokeService.get_random_joke()
-    activity = ActivityService.get_random_activity()
-    context['joke'] = joke['setup'] + ' ' + joke['punchline']
-    context['activity'] = activity['activity']
-    context['cat_selected'] = 'home'
-    context['title'] = 'Главная страница'
-    context['categories'] = get_queryset_of_categories(request)
-    return render(request, 'categories.html', context)
+    context = {'cat_selected': 'home', 'title': 'Начальная страница'}
+    return render(request, 'home.html', context)
 
 
 def categories(request):

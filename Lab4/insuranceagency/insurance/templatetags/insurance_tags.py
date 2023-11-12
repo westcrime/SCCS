@@ -3,24 +3,21 @@ from django import template
 register = template.Library()
 
 
-@register.inclusion_tag('main_menu.html')
-def show_menu(menu=None, user=None):
-    menu = [{'title': "На главную", 'url_name': 'home'},
-            {'title': "Заключить договор", 'url_name': 'make_contract'},
-            {'title': "О сайте", 'url_name': 'about'}
+@register.inclusion_tag('navbar_menu.html')
+def show_navbar_menu(menu=None, user=None):
+    menu = [
+        {'title': "На главную", 'url_name': 'home'},
+        {'title': "Виды страхования", 'url_name': 'categories'},
+        {'title': "Агенты", 'url_name': 'agents'},
+        {'title': "Филиалы", 'url_name': 'branches'},
+        {'title': "Новости", 'url_name': 'news'},
+        {'title': "О сайте", 'url_name': 'about'}
             ]
+    user_menu = [
+        {'title': "Список объектов", 'url_name': 'objects'},
+        {'title': "Список договоров", 'url_name': 'contracts'},
+        {'title': "Заключить договор", 'url_name': 'make_contract'},
+        {'title': "Выйти из профиля", 'url_name': 'logout'},
+    ]
 
-    return {"menu": menu, "user": user}
-
-
-@register.inclusion_tag('second_menu.html')
-def show_second_menu(menu=None, cat_selected="insurance_branches"):
-    menu = [{'title': "Список филиалов", 'url_name': 'branches'},
-            {'title': "Список объектов", 'url_name': 'objects'},
-            {'title': "Список договоров", 'url_name': 'contracts'},
-            {'title': "Список агентов", 'url_name': 'agents'},
-            {'title': "Виды страхования", 'url_name': 'categories'},
-            {'title': "Новости", 'url_name': 'news'}
-            ]
-
-    return {"second_menu": menu, "cat_selected": cat_selected}
+    return {"menu": menu, "user_menu": user_menu, "user": user}

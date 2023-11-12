@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<img src='{% static "images/road.png" %}' alt="road" width="150%" height="200px" style="position: absolute;
+ margin-left: -50px; margin-right: -100px; top: 85vh;">
+<img src='{% static "images/orange_car.png" %}' alt="orange-car" width="200px" height="100px" style="position: absolute;
+ left: 650px; top: 83vh;">
+<img src='{% static "images/traffic_light.png" %}' alt="traffic-light" width="350px" height="150px" style="z-index: 1; position: absolute;
+ left: 700px; top: 64vh;">
+<img id="pink_car" src='{% static "images/pink_car.png" %}' alt="pink-car" width="200px" height="100px" style="position: absolute;
+ left: -150px; top: 83vh;">
+
+<img src='{% static "images/road.png" %}' alt="road" width="150%" height="200px" style="position: absolute;
+ margin-left: -50px; margin-right: -100px; top: 255vh;">
+<img src='{% static "images/orange_car.png" %}' alt="orange-car" width="200px" height="100px" style="position: absolute;
+ left: 650px; top: 253vh;">
+<img src='{% static "images/message.png" %}' alt="message" width="490px" height="250px" style="z-index: 2; position: absolute;
+ left: 450px; top: 230vh;">
+<img src='{% static "images/traffic_light.png" %}' alt="traffic-light" width="350px" height="150px" style="z-index: 1; position: absolute;
+ left: 700px; top: 234vh;">
+<img src='{% static "images/pink_car.png" %}' alt="pink-car" width="200px" height="100px" style="position: absolute;
+ left: 490px; top: 253vh;">
+    <section class="hidden" style="margin-bottom: 50vh">
+        <h1>
+            Никто не застрахован от неудач...
+        </h1>
+    </section>
+    <section class="hidden">
+        <h1>
+            Кроме наших клиентов!
+        </h1>
+        <p>
+            Все виды страховок для дальновидных реалистов.
+        </p>
+    </section>
+    <section class="hidden">
+        <h1>Почему наша страховая компания?</h1>
+    </section>
+    <section class="hidden">
+        <div style="display: flex; align-items: center">
+            <img src='{% static "images/insurance1.png" %}' alt="Картинка" width="638" height="400px">
+            <span>
+                <p>Надежность и Опыт: Мы предлагаем защиту, на которую можно положиться.
+                С годами опыта и высочайшим уровнем профессионализма, мы обеспечиваем
+                качественное обслуживание и надежную защиту.</p>
+                <p>Индивидуальный Подход: Мы понимаем, что каждый клиент уникален.
+                Мы создаем страховые планы, соответствующие вашим потребностям и бюджету. Наша цель - предложить
+                идеальное решение и удовлетворить ваши потребности.</p>
+            <p>Широкий Спектр Услуг: Мы предлагаем разнообразные страховые продукты, чтобы защитить вас,
+                ваш бизнес и имущество от различных рисков. Наше портфолио включает в себя страхование жизни, медицинское страхование, страхование имущества и многое другое.</p>
+            </span>
+                </div>
+    </section>
+{% endblock %}
