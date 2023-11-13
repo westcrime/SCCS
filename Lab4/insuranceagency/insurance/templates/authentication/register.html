@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="display: flex; flex-direction: column; justify-content: space-evenly; margin-left: 100px; height: 500px; margin-bottom: 200px;">
     {% if form.errors %}
         <p>Возникли ошибки с регистрацией</p>
     {% endif %}
@@ -12,6 +13,7 @@
 
         <br></br>
 
-        <button type="submit">Зарегистрировать</button>
+        <button class="button" type="submit">Зарегистрировать</button>
     </form>
+</div>
 {% endblock %}

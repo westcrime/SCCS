@@ -5,11 +5,18 @@
 
     {% block ad %}
     <div class="ad">
-        <a href="https://1xbet.by/">
-            <img src="{% static 'images/adv.png' %}" alt="Реклама">
-            <p class="animated-text">Регистрируйся по ссылке и потрать все деньги с зарплаты!</p>
+        <a id="ad_href" href="https://1xbet.by/">
+            <img id="ad_img" src="{% static 'images/ad1.png' %}" alt="Реклама">
         </a>
     </div>
+    {% if user.is_staff or user.is_superuser %}
+        <form id="AdDurationForm" style="margin: 20px">
+            <label for="durationInput">Длительность рекламы</label>
+            <input type="text" name="duration" id="durationInput" placeholder="Введите время (мс)">
+            <br>
+            <button class="button" id="changeDuration">Применить</button>
+        </form>
+    {% endif %}
     {% endblock %}
 
     <a href="?sort=name">Сортировать по имени</a>

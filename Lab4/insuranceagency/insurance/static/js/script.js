@@ -41,3 +41,54 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => {
     observer.observe(el);
 })
+
+
+// Массив с путями к изображениям для смены
+const images = [
+    "static/images/ad1.png",
+    "static/images/ad2.png",
+    "static/images/ad3.png"
+];
+
+const hrefs = [
+    "https://1xbet.by/",
+    "https://youtube.com/",
+    "https://github.com/"
+];
+
+let currentImageIndex = 0; // Начальный индекс изображения
+let currentHrefIndex = 0; // Начальный индекс изображения
+let intervalID; // Переменная для хранения ID интервала
+function startInterval() {
+    const intervalInput = document.getElementById('durationInput');
+    const intervalValue = intervalInput.value;
+
+    // Проверяем, является ли введенное значение числом больше 0
+    if (!isNaN(intervalValue) && intervalValue > 0) {
+        // Преобразуем введенное значение в миллисекунды (умножаем на 1000)
+        const intervalInMillis = intervalValue * 1000;
+
+        // Если уже есть интервал, очищаем его перед установкой нового
+        if (intervalID) {
+            clearInterval(intervalID);
+        }
+
+        // Устанавливаем новый интервал изменения изображений
+        intervalID = setInterval(changeImage, intervalInMillis);
+    } else {
+        alert('Пожалуйста, введите корректное значение интервала (в миллисекундах)');
+    }
+}
+function changeImage() {
+    const adImage = document.getElementById('ad_img');
+    const adHref = document.getElementById('ad_href');
+    adImage.src = images[currentImageIndex]; // Устанавливаем новое изображение
+    adHref.href = hrefs[currentHrefIndex];
+
+    // Увеличиваем индекс изображения или сбрасываем, если достигли конца массива
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    currentHrefIndex = (currentHrefIndex + 1) % hrefs.length;
+}
+// Обработчик нажатия на кнопку "Установить интервал"
+document.getElementById('changeDuration').addEventListener('click', startInterval);
+intervalID = setInterval(changeImage, 1000);

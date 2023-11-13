@@ -2,22 +2,24 @@
 
 {% block content %}
     {% if not user.is_authenticated %}
-        <h1>Авторизация пользователя</h1>
-        {% if error_message %}
-            <p>{{ error_message }}</p>
-        {% endif %}
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <label for="id_username">Имя пользователя</label>
-            <input type="text" name="username" id="id_username" placeholder="Введите имя пользователя">
-            <br>
+        <div style="display: flex; flex-direction: column; justify-content: space-evenly; margin-left: 100px; height: 300px; margin-bottom: 200px;">
+            <h1>Авторизация пользователя</h1>
+            {% if error_message %}
+                <p>{{ error_message }}</p>
+            {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <label for="id_username">Имя пользователя</label>
+                <input type="text" name="username" id="id_username" placeholder="Введите имя пользователя">
+                <br>
+                <label for="id_password">Пароль</label>
+                <input type="password" name="password" id="id_password" placeholder="Введите свой пароль">
+                <br>
+                <button class="button" type="submit">Войти</button>
+            </form>
+            <br/>
+            <p style="text-indent: 0; margin-left: -5px">Ещё не зарегистрированы? Зарегистрируйтесь <a style="width: max-content" href="{% url 'register' %}">тут</a></p>
 
-            <label for="id_password">Пароль</label>
-            <input type="password" name="password" id="id_password" placeholder="Введите свой пароль">
-            <br>
-            <button type="submit">Войти</button>
-        </form>
-        <br/>
-        <p>Ещё не зарегистрированы? Зарегистрируйтесь <a href="{% url 'register' %}">тут</a></p>     
+        </div>
     {% endif %}
 {% endblock content%}

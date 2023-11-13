@@ -88,8 +88,11 @@ def contracts(request):
 
 
 def home(request):
-    context = {'cat_selected': 'home', 'title': 'Начальная страница'}
-    return render(request, 'home.html', context)
+    if request.user.is_authenticated:
+        return categories(request)
+    else:
+        context = {'cat_selected': 'home', 'title': 'Начальная страница'}
+        return render(request, 'home.html', context)
 
 
 def categories(request):
