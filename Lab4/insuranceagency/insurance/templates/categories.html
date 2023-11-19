@@ -14,25 +14,33 @@
             <label for="durationInput">Длительность рекламы</label>
             <input type="text" name="duration" id="durationInput" placeholder="Введите время (мс)">
             <br>
-            <button class="button" id="changeDuration">Применить</button>
         </form>
+
+        <button class="button" id="changeDuration">Применить</button>
+    {% else %}
+        <form id="AdDurationForm" style="margin: 20px; display: none">
+            <label for="durationInput">Длительность рекламы</label>
+            <input type="text" name="duration" id="durationInput" placeholder="Введите время (мс)">
+            <br>
+        </form>
+
+        <button class="button" id="changeDuration" style="display: none">Применить</button>
     {% endif %}
     {% endblock %}
 
-    <a href="?sort=name">Сортировать по имени</a>
-    <a href="?sort=ins_coef">Сортировать по стоимости страховки</a>
+    <a class="animated-link" href="?sort=name">Сортировать по имени</a>
+    <a class="animated-link" href="?sort=ins_coef">Сортировать по стоимости страховки</a>
             
     <p>Шутка: {{ joke }}</p>
     <p>Рандомное занятие: {{ activity }}</p>
-    <div class="card">
-        <ul>
-            {% for p in categories %}
-                <li>
-                    <img src="{{ p.photo.url }}" alt="Card image cap">
-                    <h2>{{ p.name }}</h2>
-                    <p>{{ p.content }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+        {% for p in categories %}
+            <div class="card">
+                <div class="card-top"><img class="card-image" src="{{ p.photo.url }}" alt="Card image cap"/></div>
+                <div class="card-mid">
+                    <h4 class="card-title">{{ p.name }} </h4>
+                    <label class="card-desc">{{ p.content }}</label>
+                    <div class="card-blur-zone"></div>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}

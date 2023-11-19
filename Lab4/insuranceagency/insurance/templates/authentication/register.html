@@ -11,9 +11,12 @@
 
         {{ form.as_p }}
 
-        <br></br>
-
         <button class="button" type="submit">Зарегистрировать</button>
+    </form>
+    <form id="age-form" style="margin-top: 20px">
+        <label class="small mb-1" for="birthdate">Дата рождения:</label><br>
+        <input type="date" id="birthdate" required>
+        <div class="small mb-1" id="result"></div>
     </form>
 </div>
 {% endblock %}

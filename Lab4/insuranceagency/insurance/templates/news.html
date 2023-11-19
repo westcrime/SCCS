@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="card">
-        <ul>
-            {% for n in news %}
-                <li>
-                    <h2>{{ n.title }}</h2>
-                    <p class="sentence-container">
-                        {{ n.description }}
-                    </p>
-                    <a href="{% url 'news_details' n.id %}">Подробнее о новости</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+    {% for n in news %}
+        <div class="card">
+
+            <div class="card-mid">
+                <a href="{% url 'news_details' n.id %}"><h4 class="card-title"> {{ n.title }} </h4> </a>
+                <label class="card-desc">{{ n.description }}</label>
+                <div class="card-blur-zone"></div>
+            </div>
+
+        </div>
+    {% endfor %}
 {% endblock %}

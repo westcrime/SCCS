@@ -16,11 +16,14 @@
 	{% show_navbar_menu user=user %}
 
 <div class="main" id="main">
-		  {% if messages %}
-		    {% for message in messages %}
-		      {{ message }}
-		    {% endfor %}
-		  {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
 	{% block content %}
 	{% endblock %}
@@ -49,6 +52,6 @@
 	</div>
 </footer>
 <!-- Конец footer'а и страницы -->
-<script src='{% static "js/script.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/script.js" %}'></script>
 </body>
 </html>

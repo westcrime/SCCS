@@ -1302,3 +1302,39 @@ DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com
 DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 162
 INFO:django.utils.autoreload:/home/westcrime/SCCS/Lab4/insuranceagency/insurance/views.py changed, reloading.
 DEBUG:root:цена - -243
+DEBUG:root:цена - 1500
+DEBUG:root:цена из даты - 1500
+INFO:root:Объект успешно Добавлен
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 137
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 121
+DEBUG:root:цена - 5
+DEBUG:root:цена из даты - 5
+INFO:root:Объект успешно Добавлен
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 141
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 179
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 131
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 121
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): official-joke-api.appspot.com:443
+DEBUG:urllib3.connectionpool:https://official-joke-api.appspot.com:443 "GET /random_joke HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.boredapi.com:443
+DEBUG:urllib3.connectionpool:https://www.boredapi.com:443 "GET /api/activity HTTP/1.1" 200 163
+DEBUG:root:Проверка на дату и время прошла успешно
+DEBUG:root:Проверка на дату и время прошла успешно

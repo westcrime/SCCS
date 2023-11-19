@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Наши агенты</h1>
-    <a href="/insurance_agents?sort=first_name">Сортировать по имени</a>
-    <a href="/insurance_agents?sort=total_earning">Сортировать по заработку</a>
+    <a class="animated-link" href="/insurance_agents?sort=first_name">Сортировать по имени</a>
+    <a class="animated-link" href="/insurance_agents?sort=total_earning">Сортировать по заработку</a>
        
 
 {% for a in agents %}
-<div class="card">
-    <ul>
-        <li>
-            <p>Имя: {{ a.first_name }}</p>
-            <p>Фамилия: {{ a.last_name }}</p>
-            <p>Отчество: {{ a.surname }}</p>
-            <p>Адрес: {{ a.address }}</p>
-            <p>Телефон: {{ a.phone_number }}</p>
-            <p>Агенство: {{ a.ins_branch.name }}</p>
-            <p>Заработанные деньги: {{ a.total_earning }} $</p>
-        </li>
-    </ul>    
-</div>
+    <div class="card">
+        <div class="card-mid">
+            <h4 class="card-title">{{ a.first_name }} {{ a.last_name }} </h4>
+            <label class="card-desc">
+                Имя: {{ a.first_name }}<br>
+                Фамилия: {{ a.last_name }}<br>
+                Отчество: {{ a.surname }}<br>
+                Адрес: {{ a.address }}<br>
+                Телефон: {{ a.phone_number }}<br>
+                Агенство: {{ a.ins_branch.name }}<br>
+                Заработанные деньги: {{ a.total_earning }} $
+            </label>
+            <div class="card-blur-zone"></div>
+        </div>
+    </div>
 {% endfor %}
 {% endblock %}

@@ -10,8 +10,7 @@ window.addEventListener('scroll',function(){
         let value = scrollY;
         if (value >= 245) {
             car_is_crashed = true;
-        }
-        else {
+        } else {
             car.style.left = `+${value / 0.5}px`;
         }
     }
@@ -59,14 +58,13 @@ const hrefs = [
 let currentImageIndex = 0; // Начальный индекс изображения
 let currentHrefIndex = 0; // Начальный индекс изображения
 let intervalID; // Переменная для хранения ID интервала
-function startInterval() {
+let intervalValue = 1000;
+function changeInterval() {
     const intervalInput = document.getElementById('durationInput');
-    const intervalValue = intervalInput.value;
+    intervalValue = intervalInput.value;
 
     // Проверяем, является ли введенное значение числом больше 0
     if (!isNaN(intervalValue) && intervalValue > 0) {
-        // Преобразуем введенное значение в миллисекунды (умножаем на 1000)
-        const intervalInMillis = intervalValue * 1000;
 
         // Если уже есть интервал, очищаем его перед установкой нового
         if (intervalID) {
@@ -74,7 +72,7 @@ function startInterval() {
         }
 
         // Устанавливаем новый интервал изменения изображений
-        intervalID = setInterval(changeImage, intervalInMillis);
+        intervalID = setInterval(changeImage, intervalValue);
     } else {
         alert('Пожалуйста, введите корректное значение интервала (в миллисекундах)');
     }
@@ -90,5 +88,83 @@ function changeImage() {
     currentHrefIndex = (currentHrefIndex + 1) % hrefs.length;
 }
 // Обработчик нажатия на кнопку "Установить интервал"
-document.getElementById('changeDuration').addEventListener('click', startInterval);
-intervalID = setInterval(changeImage, 1000);
+intervalID = setInterval(changeImage, intervalValue);
+
+function startInterval() {
+    // Проверка фокуса страницы при установке интервала
+    if (!document.hasFocus()) {
+        return; // Не устанавливаем интервал, если страница не в фокусе
+    }
+    // Если уже есть интервал, очищаем его перед установкой нового
+    if (intervalID) {
+        clearInterval(intervalID);
+    }
+    intervalID = setInterval(changeImage, intervalValue);
+}
+
+function stopInterval() {
+    clearInterval(intervalID);
+}
+
+// Обработчики событий focus и blur
+window.addEventListener('focus', startInterval);
+window.addEventListener('blur', stopInterval);
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById('changeDuration');
+    if (el) {
+      el.addEventListener('click', changeInterval, false);
+    }
+});
+
+const resultDiv = document.getElementById('result');
+let birthdateInput;
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById('birthdate');
+    if (el) {
+      el.addEventListener('change', checkDateBirth, false);
+      birthdateInput = el;
+    }
+});
+
+
+function checkDateBirth() {
+    const birthdate = new Date(birthdateInput.value);
+    const currentDate = new Date();
+    const age = currentDate.getFullYear() - birthdate.getFullYear();
+    birthdate.setFullYear(currentDate.getFullYear());
+    if (currentDate < birthdate) {
+
+    }
+    const dayOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'][birthdate.getDay()];
+
+    let message = `Ваш возраст: ${age} лет.<br> День недели вашей даты рождения: ${dayOfWeek}.`;
+
+    if (age >= 18) {
+        message += ' Добро пожаловать!';
+    } else {
+        message += ' Вы несовершеннолетний. Для использования сайта необходимо разрешение родителей.';
+        alert('Для использования сайта необходимо разрешение родителей.');
+    }
+
+    resultDiv.innerHTML = message;
+}
+
+var cards = document.getElementsByClassName('card');
+
+// Используем стандартный цикл для перебора элементов
+for (var i = 0; i < cards.length; i++) {
+    // Добавляем обработчики событий для каждой карточки
+    cards[i].addEventListener("mouseover", function(event) {
+        var cardTitle = this.querySelector('.card-title');
+        var cardDesc = this.querySelector('.card-desc');
+        var cardMiddle = this.querySelector('.card-mid');
+        var cardMiddleHeight = cardTitle.offsetHeight + cardDesc.offsetHeight;
+        cardMiddle.style.height = cardMiddleHeight + 15 + "px";
+    }, false);
+
+    cards[i].addEventListener("mouseout", function(event) {
+        var cardDomMiddle = this.querySelector('.card-mid');
+        cardDomMiddle.style.height = 50 + "px";
+    }, false);
+}

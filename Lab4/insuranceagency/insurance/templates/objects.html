@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Ваши объекты</h1>
-<a href="/add_object" role="button">Зарегистрировать новый объект</a>
+<a class="button" href="/add_object" role="button">Зарегистрировать новый объект</a>
 
-<p><a href="/objects?sort=name">Сортировать по имени</a></p>
-<p><a href="/objects?sort=cost">Сортировать по стоимости</a></p>
-<div class="card">
-	<ul>
+<p><a class="animated-link" href="/objects?sort=name">Сортировать по имени</a></p>
+<p><a class="animated-link" href="/objects?sort=cost">Сортировать по стоимости</a></p>
 		{% for o in objects %}
-			<li>
-				<br>
-				<img class="card-img-top" src="{{ o.photo.url }}" alt="Card image cap">
-				<p class="card-title">{{ o.name }}</p>
-				<p class="card-text">Цена объекта: {{o.cost}} $</p>
-				<p class="card-text">Категория страховочных рисков объекта: {{o.insured_risks}}</p>
-				<p class="card-text">Категория страховки: {{o.ins_cat.name}}</p>
-				<a class="btn btn-primary" href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a>
-				<a class="btn btn-primary" href="/update_object?id={{ o.id }}">Изменить данные (Некоторые)</a>
-				<br>
-			</li>
+            <div class="card">
+                <div class="card-top"><img class="card-image" src="{{ o.photo.url }}" alt="Card image cap"/></div>
+                <div class="card-mid">
+                    <h4 class="card-title">{{ o.name }} </h4>
+                    <label class="card-desc">
+                        Цена объекта: {{o.cost}} $<br>
+                        Категория страховочных рисков объекта: {{o.insured_risks}}<br>
+                        Категория страховки: {{o.ins_cat.name}}<br>
+                        <a class="button" href="/delete_object?id={{ o.id }}">Удалить объект (страховки сгорят)</a>
+                        <a class="button" href="/update_object?id={{ o.id }}">Изменить данные (Некоторые)</a>
+                    </label>
+                    <div class="card-blur-zone"></div>
+                </div>
+            </div>
 		{% endfor %}
-	</ul>
-</div>
 {% endblock %}
