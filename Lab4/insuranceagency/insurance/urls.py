@@ -14,8 +14,10 @@ urlpatterns = [
                 path('branches/', branches, name='branches'),
                 path('contracts/', contracts, name='contracts'),
                 path('make_contract/', MakeContractPage.as_view(), name='make_contract'),
+                path('delete_contract/', delete_contract, name='delete_contract'),
                 path('objects/', objects, name='objects'),
                 path('agents/', agents, name='agents'),
                 path('news/', news, name='news'),
                 path('news_details/<int:news_id>/', news_details, name='news_details'),
+                path('test/', test, name='test')
                ]

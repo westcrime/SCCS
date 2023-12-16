@@ -1,17 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
+    <h1>{{title}}</h1>
 
-<form method="post">
-    {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
 
-{% for f in form %}
-    <p><label for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-    {{ f.errors }}
-{% endfor %}
+        {% for f in form %}
+            <p><label for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+            {{ f.errors }}
+        {% endfor %}
 
-    <button class="button" type="submit">Подтвердить</button>
-</form>
+        <button class="button" type="submit" id="make_contract_button_id">Подтвердить</button>
+    </form>
+
+    <div id="promo_code_div" data-myvar="{{ promo_code }}"></div>
+    <label for="promo_code_input_id">Поле для промокода</label>
+    <input type="text" id="promo_code_input_id" placeholder="Введите промокод">
+
+<script>
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById('make_contract_button_id');
+    if (el) {
+      el.addEventListener('click', check_promo_code, false);
+    }
+});
+
+function check_promo_code() {
+    const promo_code_input = document.getElementById('promo_code_input_id');
+    if (promo_code_input) {
+        var element = document.getElementById('promo_code_div');
+        var promo_code = '{{ promo_code }}';
+        if (promo_code_input.value === promo_code) {
+            alert('promo code activated');
+        }
+    }
+}
+</script>
+
 
 {% endblock %}

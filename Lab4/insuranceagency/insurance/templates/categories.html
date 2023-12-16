@@ -33,14 +33,16 @@
             
     <p>Шутка: {{ joke }}</p>
     <p>Рандомное занятие: {{ activity }}</p>
-        {% for p in categories %}
-            <div class="card">
-                <div class="card-top"><img class="card-image" src="{{ p.photo.url }}" alt="Card image cap"/></div>
-                <div class="card-mid">
-                    <h4 class="card-title">{{ p.name }} </h4>
-                    <label class="card-desc">{{ p.content }}</label>
-                    <div class="card-blur-zone"></div>
-                </div>
+    <div id="countdown"></div>
+    <div id="result"></div>
+    {% for p in categories %}
+        <div class="card">
+            <div class="card-top"><img class="card-image" src="{{ p.photo.url }}" alt="Card image cap"/></div>
+            <div class="card-mid">
+                <h4 class="card-title">{{ p.name }} </h4>
+                <label class="card-desc">{{ p.content }}</label>
+                <div class="card-blur-zone"></div>
             </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
 {% endblock %}

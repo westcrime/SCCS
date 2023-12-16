@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
     <h1>Наши агенты</h1>
-    <a class="animated-link" href="/insurance_agents?sort=first_name">Сортировать по имени</a>
-    <a class="animated-link" href="/insurance_agents?sort=total_earning">Сортировать по заработку</a>
+    <a class="animated-link" href='{% url "contracts" %}?sort=first_name'>Сортировать по имени</a>
+    <a class="animated-link" href='{% url "contracts" %}?sort=total_earning'>Сортировать по заработку</a>
        
 
 {% for a in agents %}
     <div class="card">
+        <div class="card-top"><img class="card-image" src="{% static 'images/ins_agent_default.png' %}" height="50px" width="50px" alt="Card image cap"/></div>
         <div class="card-mid">
             <h4 class="card-title">{{ a.first_name }} {{ a.last_name }} </h4>
             <label class="card-desc">

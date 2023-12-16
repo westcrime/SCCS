@@ -117,7 +117,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
-const resultDiv = document.getElementById('result');
+const resultDiv = document.getElementById('resultDate');
 let birthdateInput;
 window.addEventListener("DOMContentLoaded", (event) => {
     const el = document.getElementById('birthdate');
@@ -168,3 +168,35 @@ for (var i = 0; i < cards.length; i++) {
         cardDomMiddle.style.height = 50 + "px";
     }, false);
 }
+
+
+// Функция для запуска обратного отсчета
+function startCountdown() {
+    const countdownDiv = document.getElementById('countdown');
+    const expirationTime = localStorage.getItem('expirationTime');
+
+    if (expirationTime) {
+        const now = new Date().getTime();
+        const timeLeft = new Date(expirationTime) - now;
+
+        if (timeLeft > 0) {
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            countdownDiv.innerHTML = `Осталось времени: ${minutes} минут ${seconds} секунд`;
+        } else {
+            countdownDiv.innerHTML = 'Время вышло';
+            localStorage.removeItem("expirationTime");
+        }
+    } else {
+        const now = new Date().getTime();
+        const expirationTime = new Date(now + 3600000); // 1 час в миллисекундах
+        localStorage.setItem('expirationTime', expirationTime.toString());
+        startCountdown();
+    }
+}
+
+startCountdown();
+
+// Обновление таймера каждую секунду
+setInterval(startCountdown, 1000);

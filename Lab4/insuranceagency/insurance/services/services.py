@@ -28,6 +28,19 @@ def delete_object_of_insurance(id: int, request):
     else:
         raise Exception("Deleting of object of insurance exception!")
 
+
+def delete_contract_of_user(id: int, request):
+    """Функция удаления контракта страховки конкретного пользователя"""
+    if id is None:
+        raise Exception("Deleting of object of insurance exception!")
+    contract = InsuranceContract.objects.get(pk=id)
+    if contract.ins_client.id == request.user.id:
+        name_ob_object = contract.ins_object.name
+        contract.delete()
+        return name_ob_object
+    else:
+        raise Exception("Deleting of contract exception!")
+
 def get_queryset_of_contracts(request):
     """Получение списка контрактов, отсортированного по выбранному пользователем признаку"""
      # Удаление контрактов, срок которых истек

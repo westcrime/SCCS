@@ -17,9 +17,9 @@
         {% if user.is_authenticated == True %}
         <li>
             <div class="dropdown" style="margin-right: 150px;">
-                <button class="dropbtn">{{ user }}
-                    <img src='{% static "images/user_light.png" %}' alt="user-pic" style="vertical-align: middle" height="36px" width="36px">
-                </button>
+                <a>{{ user }}
+                    <img src='{% static "images/user_light.png" %}' alt="user-pic" style="vertical-align: middle" height="40px" width="40px">
+                </a>
                 <div class="dropdown-content">
                     {% for u in user_menu %}
                         <a class="animated-link" href="{% url u.url_name %}" style="font-size: 14px">{{ u.title }}</a>

@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Ваши страховки</h1>
-<p><a href="/contracts?sort=time_create">Сортировать по времени создания</a></p>
-<p><a href="/contracts?sort=time_end">Сортировать по времения окончания страховки</a></p>
-<p><a href="/contracts?sort=total_cost">Сортировать по общей стоимости страховки</a></p>
-<div class="card">
-	<ul>
-		{% for p in contracts %}
-			<li>
-				<p>Объект страхования: {{p.ins_object.name}}</p>
-				<p>Время создания: {{p.time_create}}</p>
-				<p>Время окончания: {{p.time_end}}</p>
-				<p>Агент заключивший  страховку: {{p.ins_agent.first_name}} {{p.ins_agent.last_name}} {{p.ins_agent.surname}}</p>
-				<p>Общая стоимость сделки: {{p.total_cost}}</p>
-			</li>
-		{% endfor %}
-	</ul>
-</div>
+<p><a class="animated-link" href='{% url "contracts" %}?sort=time_create'>Сортировать по времени создания</a></p>
+<p><a class="animated-link" href='{% url "contracts" %}?sort=time_end'>Сортировать по времени окончания страховки</a></p>
+<p style="margin-bottom: 20px"><a class="animated-link" href='{% url "contracts" %}?sort=total_cost'>Сортировать по общей стоимости страховки</a></p>
+
+{% for p in contracts_for_display %}
+    <div class="card" style="width: 500px">
+        <div class="card-top"><img class="card-image" src="{{ p.ins_object.photo.url }}" alt="Card image cap"/></div>
+        <div class="card-mid">
+            <h4 class="card-title">
+                <p>Объект страхования: {{p.ins_object.name}}</p>
+            </h4>
+            <label class="card-desc">
+                <p>Время создания: {{p.time_create}}</p>
+                <p>Время окончания: {{p.time_end}}</p>
+                <p>Агент заключивший страховку: {{p.ins_agent.first_name}} {{p.ins_agent.last_name}}</p>
+                <p>Общая стоимость сделки: {{p.total_cost}}$</p>
+                <a class="button" href='{% url "delete_contract" %}?id={{ p.id }}'>Удалить страховку</a>
+            </label>
+            <div class="card-blur-zone"></div>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}

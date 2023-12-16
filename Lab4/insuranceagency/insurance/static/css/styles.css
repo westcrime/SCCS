@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5 {
 }
 a {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 a:visited {
@@ -242,7 +242,7 @@ label {
     font-size: 18px;
 }
 
-input[type="text"], input[type="password"], textarea {
+input[type="text"], input[type="number"], input[type="password"], textarea {
     font-size: 16px;
     border-radius: 5px;
     height: 36px;
@@ -465,14 +465,14 @@ p {
 }
     /* Стили для input типа date */
 input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f4f4f4;
-  color: #333;
-  font-size: 16px;
-  outline: none;
+    width: 120px;
+    padding: 10px;
+    border: 1px solid slategray;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 16px;
+    outline: none;
 }
 
 /* Стили для всплывающего календаря datepicker */
@@ -576,5 +576,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   left: 0;
   height: 15px;
   background-color: rgba(255, 255, 255, .8);
+}
 
+select {
+  appearance: none;
+  /* safari */
+  -webkit-appearance: none;
+  /* other styles for aesthetics */
+  font-size: 1.15rem;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid slategray;
+  border-radius: 5px;
+  color: var(--text-color);
+  cursor: pointer;
 }

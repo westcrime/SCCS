@@ -37,7 +37,8 @@ def login_user(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        return render(request, 'authentication/login.html')
+        context = {'title': 'Авторизация', 'cat_selected': 'login'}
+        return render(request, 'authentication/login.html', context)
 
 
 def logout_user(request):
@@ -54,15 +55,14 @@ def register_user(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
+
             login(request, user)
             messages.success(request, "Пользователь успешно зарегистрирован...")
             return redirect('home')
     else:
         form = RegisterUserForm()
-
-    return render(request, 'authentication/register.html', {
-        'form': form,
-    })
+        context = {'title': 'Регистрация', 'cat_selected': 'register', 'form': form}
+        return render(request, 'authentication/register.html', context)
 
 
 def about(request):
@@ -80,10 +80,7 @@ def about(request):
 def contracts(request):
     if not request.user.is_authenticated:
         return redirect(reverse('login'))
-    context = {}
-    context['title'] = 'Страховки'
-    context['cat_selected'] = 'contracts'
-    context['contracts'] = get_queryset_of_contracts(request)
+    context = {'title': 'Страховки', 'cat_selected': 'contracts', 'contracts_for_display': get_queryset_of_contracts(request)}
     return render(request, 'contracts.html', context)
 
 
@@ -108,27 +105,18 @@ def categories(request):
 
 
 def branches(request):
-    context = {}
-    context['cat_selected'] = 'branches'
-    context['title'] = 'Филиалы'
-    context['branches'] = InsuranceBranch.objects.all()
+    context = {'cat_selected': 'branches', 'title': 'Филиалы', 'branches': InsuranceBranch.objects.all()}
     return render(request, 'branches.html', context)
 
 
 def agents(request):
-    context = {}
-    context['cat_selected'] = 'agents'
-    context['title'] = 'Агенты'
-    context['agents'] = get_queryset_of_agents(request)
+    context = {'cat_selected': 'agents', 'title': 'Агенты', 'agents': get_queryset_of_agents(request)}
     return render(request, 'agents.html', context)
 
 
 @login_required
 def objects(request):
-    context = {}
-    context['cat_selected'] = 'objects'
-    context['title'] = 'Объекты'
-    context['objects'] = get_queryset_of_objects(request)
+    context = {'cat_selected': 'objects', 'title': 'Объекты', 'objects': get_queryset_of_objects(request)}
     return render(request, 'objects.html', context)
 
 
@@ -189,29 +177,45 @@ class MakeContractPage(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['promo_code'] = 'SALE'
         return dict(list(context.items()))
 
     def form_valid(self, form):
         form.instance.time_create = datetime.datetime.now().replace(tzinfo=pytz.utc)
         form.instance.ins_client = self.request.user
-        form.instance.total_cost = make_contract(form.instance.time_create, form.instance.time_end, form.instance.ins_object)
+        form.instance.total_cost = make_contract(form.instance.time_create, form.instance.time_end,
+                                                 form.instance.ins_object)
         form.save()
         messages.success(self.request, f"Вы успешно застраховали объект {(form.cleaned_data['ins_object']).name}")
         return redirect('contracts')
 
 
 def news(request):
-    context = {}
-    context['cat_selected'] = 'news'
-    context['title'] = 'Новости'
-    context['news'] = news_service.get_news()
+    context = {'cat_selected': 'news', 'title': 'Новости', 'news': news_service.get_news()}
     return render(request, 'news.html', context)
 
 
 def news_details(request, news_id):
-    context = {}
-    context['cat_selected'] = 'news_details'
+    context = {'cat_selected': 'news_details'}
     selected_news = news_service.get_news().index(news_id)
     context['title'] = f'{selected_news.title}'
     context['news'] = selected_news
     return render(request, 'news_details.html', context)
+
+
+def test(request):
+    return render(request, 'test.html')
+
+
+@login_required
+def delete_contract(request):
+    id = request.GET.get('id')
+    try:
+        contract = InsuranceContract.objects.get(id=id)
+        if contract.ins_client.id == request.user.id:
+            name = delete_contract_of_user(id, request)
+    except:
+        messages.warning(request, f"Возникли ошибки при удалении: {name}!")
+    messages.success(request, f"Вы успешно удалили контракт с объектом: {name}!")
+    return redirect('contracts')
+

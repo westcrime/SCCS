@@ -4,6 +4,7 @@
 <html lang="ru">
 <head>
 	<title>{{ title }}</title>
+    <link rel="icon" type="image/x-icon" href='{% static "images/logo_light.png" %}'>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,15 +17,6 @@
 	{% show_navbar_menu user=user %}
 
 <div class="main" id="main">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="message">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-
 	{% block content %}
 	{% endblock %}
 </div>
